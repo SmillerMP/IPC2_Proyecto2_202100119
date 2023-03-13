@@ -2,29 +2,61 @@
 <CONFIG>
     <listaElementos>
         <elemento>
-            <numeroAtomico>hola</numeroAtomico>
+            <numeroAtomico>5</numeroAtomico>
             <simbolo>B</simbolo>
             <nombreElemento>Boro</nombreElemento>
         </elemento>
         <elemento>
-            <numeroAtomico>ola</numeroAtomico>
+            <numeroAtomico>27</numeroAtomico>
             <simbolo>Co</simbolo>
             <nombreElemento>Cobalto</nombreElemento>
         </elemento>
         <elemento>
-            <numeroAtomico>ola3</numeroAtomico>
+            <numeroAtomico>47</numeroAtomico>
             <simbolo>Ag</simbolo>
             <nombreElemento>Plata</nombreElemento>
         </elemento>
     </listaElementos>
     <listaMaquinas>
         <Maquina>
-            <nombre>valorAlfanumerico</nombre>
-            <numeroPines>valorNumerico</numeroPines>
-            <numeroElementos>valorNumerico</numeroElementos>
+            <nombre>Maquina1</nombre>
+            <numeroPines>3</numeroPines>
+            <numeroElementos>6</numeroElementos>
             <pin>
                 <elementos>
-                    <elemento>simboloDelElemento</elemento> 
+                    <elemento>Calcio</elemento>
+                    <elemento>Oro</elemento> 
+                    <elemento>Neon</elemento>
+                    <!-- Aqui pueden ir mas elementos -->
+                </elementos>
+            </pin>
+            <pin>
+                <elementos>
+                    <elemento>Hidrogeno</elemento>
+                    <elemento>Galio</elemento> 
+                    <elemento>Cloro</elemento>
+                    <!-- Aqui pueden ir mas elementos -->
+                </elementos>
+            </pin>
+            <!-- Pueden haber mas pines -->
+        </Maquina>
+        <Maquina>
+            <nombre>Maquina2</nombre>
+            <numeroPines>3</numeroPines>
+            <numeroElementos>6</numeroElementos>
+            <pin>
+                <elementos>
+                    <elemento>Potasio</elemento>
+                    <elemento>Hierro</elemento> 
+                    <elemento>Cinc</elemento>
+                    <!-- Aqui pueden ir mas elementos -->
+                </elementos>
+            </pin>
+            <pin>
+                <elementos>
+                    <elemento>Fosforo</elemento>
+                    <elemento>Oxigeno</elemento> 
+                    <elemento>Aluminio</elemento>
                     <!-- Aqui pueden ir mas elementos -->
                 </elementos>
             </pin>
@@ -34,9 +66,10 @@
     </listaMaquinas>
     <listaCompuestos>
         <compuesto>
-            <nombre>valorAlfanumerico</nombre>
+            <nombre>valorAlfanumericoHOLA</nombre>
             <elementos>
-                <elemento>simboloDelElemento</elemento>
+                <elemento>Au</elemento>
+                <elemento>O</elemento>
                 <!-- pueden venir mas elementos -->
             </elementos>
         </compuesto>
