@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<CONFIG>
+    <listaElementos>
+        <elemento>
+            <numeroAtomico>hola</numeroAtomico>
+            <simbolo>B</simbolo>
+            <nombreElemento>Boro</nombreElemento>
+        </elemento>
+        <elemento>
+            <numeroAtomico>ola</numeroAtomico>
+            <simbolo>Co</simbolo>
+            <nombreElemento>Cobalto</nombreElemento>
+        </elemento>
+        <elemento>
+            <numeroAtomico>ola3</numeroAtomico>
+            <simbolo>Ag</simbolo>
+            <nombreElemento>Plata</nombreElemento>
+        </elemento>
+    </listaElementos>
+    <listaMaquinas>
+        <Maquina>
+            <nombre>valorAlfanumerico</nombre>
+            <numeroPines>valorNumerico</numeroPines>
+            <numeroElementos>valorNumerico</numeroElementos>
+            <pin>
+                <elementos>
+                    <elemento>simboloDelElemento</elemento> 
+                    <!-- Aqui pueden ir mas elementos -->
+                </elementos>
+            </pin>
+            <!-- Pueden haber mas pines -->
+        </Maquina>
+        <!-- pueden haber mas maquinas -->
+    </listaMaquinas>
+    <listaCompuestos>
+        <compuesto>
+            <nombre>valorAlfanumerico</nombre>
+            <elementos>
+                <elemento>simboloDelElemento</elemento>
+                <!-- pueden venir mas elementos -->
+            </elementos>
+        </compuesto>
+        <!-- Pueden venir mas compuestos -->
+    </listaCompuestos>
+</CONFIG>
