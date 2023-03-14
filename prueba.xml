@@ -20,8 +20,8 @@
     <listaMaquinas>
         <Maquina>
             <nombre>Maquina1</nombre>
-            <numeroPines>3</numeroPines>
-            <numeroElementos>6</numeroElementos>
+            <numeroPines>2</numeroPines>
+            <numeroElementos>3</numeroElementos>
             <pin>
                 <elementos>
                     <elemento>Calcio</elemento>
@@ -42,8 +42,8 @@
         </Maquina>
         <Maquina>
             <nombre>Maquina2</nombre>
-            <numeroPines>3</numeroPines>
-            <numeroElementos>6</numeroElementos>
+            <numeroPines>2</numeroPines>
+            <numeroElementos>3</numeroElementos>
             <pin>
                 <elementos>
                     <elemento>Potasio</elemento>
