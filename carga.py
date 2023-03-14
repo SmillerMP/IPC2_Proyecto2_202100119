@@ -1,12 +1,16 @@
 import xml.etree.ElementTree as ET
 
+from clasesDatos import datosElementos
+from nodo import *
 
 
-# listaCelulas = lista()
 
 
-# def get_listaCelulas():
-#     return listaCelulas
+listaElementosNodo = listaDoble()
+
+def get_listaElementosNodo():
+    return listaElementosNodo
+
 
 
 
@@ -64,24 +68,38 @@ def cargaArchivo():
             simbolo = elemento.find("simbolo").text
             nombreElemento = elemento.find("nombreElemento").text
             
-            print(f"Numero Atomico: {numeroAtomico}, Simbolo: {simbolo}, Nombre Elemento: {nombreElemento}")
+            #print(f"Numero Atomico: {numeroAtomico}, Simbolo: {simbolo}, Nombre Elemento: {nombreElemento}")
 
 
+        contadorMaquina = 0
+        contadorPines = 0
         for Maquina in root.findall(".//listaMaquinas/Maquina"):
             nombre = Maquina.find("nombre").text
             numeroPines = Maquina.find("numeroPines").text
             numeroElementos = Maquina.find("numeroElementos").text
-            
 
-            print(f"Nombre: {nombre}, Numero Pines: {numeroPines}, Numero Elementos: {numeroElementos}")
-            contadorPines = 0
+            listaElementos = Maquina.findall("pin/elementos/elemento")
+            contadorMaquina += 1
+            
+        
+
+            #print(f"Nombre: {nombre}, Numero Pines: {numeroPines}, Numero Elementos: {numeroElementos}")
+            
 
             for elementos in Maquina.findall("pin/elementos/elemento"):
                 elemento = elementos.text
                 contadorPines += 1
 
+
+                listaElementos_temp = datosElementos(contadorMaquina, contadorPines, elemento)
+                listaElementosNodo._agregar_inicio(listaElementos_temp)
+
+                if contadorPines == len(listaElementos):
+                    contadorPines = 0
+
                 
-                print(f"Elemento: {elemento}")
+                
+                #print(f"Elemento: {elemento}")
             
 
 
@@ -92,8 +110,10 @@ def cargaArchivo():
             for elementos in compuesto.findall("elementos/elemento"):
                 elemento = elementos.text
 
-                print(f"Nombre: {nombre}, Elemento: {elemento}")
+                #print(f"Nombre: {nombre}, Elemento: {elemento}")
 
             
 
 cargaArchivo()
+listaElementosNodo._recorrer_adelante()
+listaElementosNodo._size()
