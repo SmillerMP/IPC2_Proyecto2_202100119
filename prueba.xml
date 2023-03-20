@@ -20,13 +20,37 @@
     <listaMaquinas>
         <Maquina>
             <nombre>Maquina1</nombre>
-            <numeroPines>2</numeroPines>
+            <numeroPines>5</numeroPines>
             <numeroElementos>3</numeroElementos>
             <pin>
                 <elementos>
                     <elemento>Calcio</elemento>
                     <elemento>Oro</elemento> 
                     <elemento>Neon</elemento>
+                    <!-- Aqui pueden ir mas elementos -->
+                </elementos>
+            </pin>
+            <pin>
+                <elementos>
+                    <elemento>Calcio</elemento>
+                    <elemento>Oro</elemento> 
+                    <elemento>Neon</elemento>
+                    <!-- Aqui pueden ir mas elementos -->
+                </elementos>
+            </pin>
+            <pin>
+                <elementos>
+                    <elemento>Hidrogeno</elemento>
+                    <elemento>Galio</elemento> 
+                    <elemento>Cloro</elemento>
+                    <!-- Aqui pueden ir mas elementos -->
+                </elementos>
+            </pin>
+            <pin>
+                <elementos>
+                    <elemento>Hidrogeno</elemento>
+                    <elemento>Galio</elemento> 
+                    <elemento>Cloro</elemento>
                     <!-- Aqui pueden ir mas elementos -->
                 </elementos>
             </pin>

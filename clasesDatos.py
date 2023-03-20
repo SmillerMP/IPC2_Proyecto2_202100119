@@ -1,8 +1,9 @@
 class datosElementos():
 
-    def __init__(self,maquina, pin, simboloElemento):
+    def __init__(self,maquina, pin, indice, simboloElemento):
         self.maquina = maquina
         self.pin = pin
+        self.indice = indice
         self.simboloElemento = simboloElemento
 
 

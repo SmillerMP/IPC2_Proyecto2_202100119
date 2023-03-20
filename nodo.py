@@ -1,3 +1,5 @@
+from clasesDatos import *
+
 class nodo():
 
     def __init__(self, dato, siguiente = None, anterior = None):
@@ -37,7 +39,7 @@ class listaDoble():
     def _recorrer_adelante(self):
         aux = self.primero
         while aux != None:
-            print(aux.dato)
+            print(aux.dato.maquina, aux.dato.pin, aux.dato.indice, aux.dato.simboloElemento)
             aux = aux.siguiente
 
     def _recorrer_atras(self):

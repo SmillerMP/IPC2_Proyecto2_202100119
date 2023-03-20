@@ -72,7 +72,9 @@ def cargaArchivo():
 
 
         contadorMaquina = 0
-        contadorPines = 0
+        contadorIndice = 0
+        contadorPin = 1
+        contadorElementos = 0
         for Maquina in root.findall(".//listaMaquinas/Maquina"):
             nombre = Maquina.find("nombre").text
             numeroPines = Maquina.find("numeroPines").text
@@ -80,22 +82,36 @@ def cargaArchivo():
 
             listaElementos = Maquina.findall("pin/elementos/elemento")
             contadorMaquina += 1
+
+            listaPines  = Maquina.findall("pin")
             
         
-
             #print(f"Nombre: {nombre}, Numero Pines: {numeroPines}, Numero Elementos: {numeroElementos}")
             
 
             for elementos in Maquina.findall("pin/elementos/elemento"):
                 elemento = elementos.text
-                contadorPines += 1
+                contadorElementos += 1
+                contadorIndice += 1
 
 
-                listaElementos_temp = datosElementos(contadorMaquina, contadorPines, elemento)
+                listaElementos_temp = datosElementos(contadorMaquina, contadorPin, contadorIndice, elemento)
                 listaElementosNodo._agregar_inicio(listaElementos_temp)
 
-                if contadorPines == len(listaElementos):
-                    contadorPines = 0
+                # Indica el numero de Pin donde esta posicionado
+                if contadorElementos == int(numeroElementos):
+                    contadorPin += 1
+                    contadorElementos = 0
+
+                # Reincia el el Indice de elementos en la maquina
+                if contadorIndice == len(listaElementos):
+                    contadorIndice = 0
+
+                # Reincia el contador de pin de la maquina
+                if contadorIndice == 0:
+                    contadorPin = 1
+
+                
 
                 
                 
