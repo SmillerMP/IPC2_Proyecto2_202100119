@@ -15,7 +15,7 @@ def get_listaElementosNodo():
 
 
 def cargaArchivo():
-    ruta = "D:\\Samuellllll\\Documentos\\Universidad\\CUARTO SEMESTRE\\IPC 2\\Proyectos IPC2\\IPC2_Proyecto2_202100119\\IPC2_Proyecto2_202100119\\prueba.xml"
+    ruta = "entrada_proyecto2_dummy.xml"
     tree = ET.parse(ruta)
     root = tree.getroot()
 
@@ -45,9 +45,6 @@ def cargaArchivo():
 
         #print(len(listaElementos), (cantidadElementos*numeroPines))
 
-        if (len(listaElementos) != (cantidadElementos*numeroPines)):
-            ListaElemetosError.append(contador)
-
     #print(ListaElemetosError)
 
 
@@ -57,10 +54,9 @@ def cargaArchivo():
         for x in ListaPinError:
             print(f"Maquina: {x}")
 
-    elif (len(ListaElemetosError) != 0): 
-        print("Existe Error con los ELEMENTOS del XML en las Siguientes Maquinas: ")
-        for x in ListaElemetosError:
-            print(f"Maquina: {x}")
+    elif (len(listaElementos) != cantidadElementos): 
+        print("Existe Error con los ELEMENTOS del XML en las Maquinas: ")
+
 
     else:
         for elemento in root.findall(".//listaElementos/elemento"):
