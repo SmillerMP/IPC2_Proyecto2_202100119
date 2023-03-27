@@ -21,7 +21,7 @@ def cargaArchivo():
 
     
     contador = 0
-    ListaElemetosError = []
+    elementosPines = 0
     ListaPinError = []
     for Maquina in root.findall(".//listaMaquinas/Maquina"):
 
@@ -29,6 +29,7 @@ def cargaArchivo():
         numeroPines = Maquina.find("numeroPines").text
         listaPines  = Maquina.findall("pin")
         numeroPines = int(numeroPines)
+
 
         # Comprobacion Numero de Elementos
         cantidadElementos = Maquina.find("numeroElementos").text
@@ -39,6 +40,8 @@ def cargaArchivo():
 
         #print(len(listaPines), numeroPines)
     
+        elementosPines = (cantidadElementos / (len(listaPines)))
+        print(elementosPines)
 
         if (len(listaPines) != numeroPines):
             ListaPinError.append(contador)
@@ -71,6 +74,7 @@ def cargaArchivo():
         contadorIndice = 0
         contadorPin = 1
         contadorElementos = 0
+        contadorBasico = 1
         for Maquina in root.findall(".//listaMaquinas/Maquina"):
             nombre = Maquina.find("nombre").text
             numeroPines = Maquina.find("numeroPines").text
@@ -89,6 +93,7 @@ def cargaArchivo():
                 elemento = elementos.text
                 contadorElementos += 1
                 contadorIndice += 1
+                contadorBasico += 1
 
 
                 listaElementos_temp = datosElementos(contadorMaquina, contadorPin, contadorIndice, elemento)
@@ -106,6 +111,12 @@ def cargaArchivo():
                 # Reincia el contador de pin de la maquina
                 if contadorIndice == 0:
                     contadorPin = 1
+                
+                if contadorBasico == elementosPines:
+                    contadorBasico = 0
+                    contadorPin += 1
+
+
 
                 
 
