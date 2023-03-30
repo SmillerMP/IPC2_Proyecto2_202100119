@@ -1,7 +1,6 @@
 from clasesDatos import *
 
 class nodo():
-
     def __init__(self, dato, siguiente = None, anterior = None):
         self.dato = dato
         self.siguiente = siguiente
@@ -51,7 +50,42 @@ class listaDoble():
 
     def _size(self):
         print(self.contador)
+
+
+
+class ListaSimple():
+    def __init__(self):
+        self.primero = None
+        self.ultimo = None
+        self.contador = 0
+
+    def _vacia(self):
+        return self.primero == None
+    
+
+    def _agregar_final(self, dato):
+        if self._vacia():
+            self.primero = self.ultimo = nodo(dato)
+        else:
+            aux = self.ultimo
+            self.ultimo = aux.siguiente = nodo(dato)
+            self.ultimo.anterior = aux
+        self.contador += 1
+
+
+    def _recorrer(self):
+        aux = self.primero
+        while aux != None:
+            print(aux.dato)
+            aux = aux.siguiente
+
+    def _size(self):
+        return(self.contador)
         
+
+
+
+
 # lista = listaDoble()
 # lista2 = listaDoble()
 
@@ -74,3 +108,40 @@ class listaDoble():
 
 
 
+# lista = listaCompuesto()
+# lista._agregar_final(1)
+# lista._agregar_final(2)
+# lista._agregar_final(3)
+# lista._agregar_final(5)
+# lista._agregar_final(6)
+# lista._recorrer()
+# lista._size()
+
+
+class colaCompuestos():
+    def __init__(self):
+        self.primero = None
+        self.ultimo = None
+        self.cola = []
+
+    def _getPrimero(self):
+        return self.primero
+    
+    def _getUltimo(self):
+        return self.ultimo
+    
+    def _agregarCola(self, dato):
+        self.cola.append(dato)
+        self.final = dato
+        return self.ultimo
+    
+    def _borrarCola(self):
+        self.cola.pop(0)
+        self.primero = self.cola[0]
+        return self.primero
+    
+    def _size(self):
+        print(len(self.cola))
+    
+    def _recorrer(self):
+        return 

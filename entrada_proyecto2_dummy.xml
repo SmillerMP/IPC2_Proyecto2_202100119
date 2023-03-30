@@ -729,7 +729,18 @@
             <elemento>W</elemento>
             <elemento>Po</elemento>
             <elemento>Np</elemento>
-            <elemento>Md</elemento>
+            <elemento>Cm</elemento>
+            <elemento>Au</elemento>
+            <elemento>Ta</elemento>
+         </elementos>
+      </compuesto>
+      <compuesto>
+         <nombre>Toro</nombre>
+         <elementos>
+            <elemento>In</elemento>
+            <elemento>Pr</elemento>
+            <elemento>Po</elemento>
+            <elemento>Np</elemento>
             <elemento>Cm</elemento>
             <elemento>Au</elemento>
             <elemento>Ta</elemento>

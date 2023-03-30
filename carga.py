@@ -1,21 +1,30 @@
 import xml.etree.ElementTree as ET
 
-from clasesDatos import datosElementos
+from clasesDatos import *
 from nodo import *
 
 
 
 
 listaElementosNodo = listaDoble()
-
 def get_listaElementosNodo():
     return listaElementosNodo
 
+lista_Elementos = ListaSimple()
+def get_lista_Elementos():
+    return lista_Elementos
 
+lista_CompuestosElementos = ListaSimple()
+def get_CompuestosElementos():
+    return lista_CompuestosElementos
+
+cola_Compuestos = colaCompuestos()
+def get_cola_Compuestos():
+    return cola_Compuestos
 
 
 def cargaArchivo():
-    ruta = "entrada_proyecto2_dummy.xml"
+    ruta = "D:\\Samuellllll\\Documentos\\Universidad\\CUARTO SEMESTRE\\IPC 2\\Proyectos IPC2\\IPC2_Proyecto2_202100119\\IPC2_Proyecto2_202100119\\entrada_proyecto2_dummy.xml"
     tree = ET.parse(ruta)
     root = tree.getroot()
 
@@ -41,7 +50,7 @@ def cargaArchivo():
         #print(len(listaPines), numeroPines)
     
         elementosPines = (cantidadElementos / (len(listaPines)))
-        print(elementosPines)
+        #numeroCompuestoprint(elementosPines)
 
         if (len(listaPines) != numeroPines):
             ListaPinError.append(contador)
@@ -74,7 +83,7 @@ def cargaArchivo():
         contadorIndice = 0
         contadorPin = 1
         contadorElementos = 0
-        contadorBasico = 1
+        contadorBasico = 0
         for Maquina in root.findall(".//listaMaquinas/Maquina"):
             nombre = Maquina.find("nombre").text
             numeroPines = Maquina.find("numeroPines").text
@@ -115,11 +124,6 @@ def cargaArchivo():
                 if contadorBasico == elementosPines:
                     contadorBasico = 0
                     contadorPin += 1
-
-
-
-                
-
                 
                 
                 #print(f"Elemento: {elemento}")
@@ -129,14 +133,31 @@ def cargaArchivo():
         for compuesto in root.findall(".//listaCompuestos/compuesto"):
             nombre = compuesto.find("nombre").text
 
-
+            contador = 0
+            lista_Elementos = ListaSimple()
             for elementos in compuesto.findall("elementos/elemento"):
                 elemento = elementos.text
+                contador += 1
+                
+                lista_Elementos._agregar_final(elemento)
 
-                #print(f"Nombre: {nombre}, Elemento: {elemento}")
+            listaElementos_temp = dataCompuesto(nombre, lista_Elementos, contador)
+            lista_CompuestosElementos._agregar_final(listaElementos_temp)
+
+
+                # #print(f"Nombre: {nombre}, Elemento: {elemento}")
+                # (len(compuesto.findall("elementos/elemento")))
+                
 
             
 
 cargaArchivo()
-listaElementosNodo._recorrer_adelante()
-listaElementosNodo._size()
+# listaElementosNodo._recorrer_adelante()
+# listaElementosNodo._size()
+
+print("\n\n")
+
+nodo_actual = lista_CompuestosElementos.primero
+while nodo_actual != None:
+    print(nodo_actual.dato.get_nombreCompuesto())
+    nodo_actual = nodo_actual.siguiente

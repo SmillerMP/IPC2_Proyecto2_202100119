@@ -6,8 +6,6 @@ class datosElementos():
         self.indice = indice
         self.simboloElemento = simboloElemento
 
-
-
     def get_maquinaElemento(self):
         return self.maquina
     
@@ -17,3 +15,21 @@ class datosElementos():
     def get_simboloElemento(self):
         return self.simboloElemento
     
+
+
+class dataCompuesto():
+    def __init__(self, nombreCompuesto, listaCompuestos, numeroCompuesto):
+        self.nombreCompuesto = nombreCompuesto
+        self.listaCompuestos = listaCompuestos
+        self.numeroCompuesto = numeroCompuesto
+
+
+    def get_listaCompuestos(self):
+        return self.listaCompuestos
+    
+    def get_nombreCompuesto(self):
+        return self.nombreCompuesto
+    
+    def imprimirListaCompuestos(self):
+        for x in self.listaCompuestos:
+            print(x)
