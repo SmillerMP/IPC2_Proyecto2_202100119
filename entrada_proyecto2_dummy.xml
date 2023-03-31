@@ -593,6 +593,7 @@
       </elemento>
    </listaElementos>
    <listaMaquinas>
+   
       <Maquina>
          <nombre>prueba</nombre>
          <numeroPines>5</numeroPines>
@@ -742,6 +743,16 @@
             <elemento>Po</elemento>
             <elemento>Np</elemento>
             <elemento>Cm</elemento>
+            <elemento>Au</elemento>
+            <elemento>Ta</elemento>
+         </elementos>
+      </compuesto>
+      <compuesto>
+         <nombre>Micol</nombre>
+         <elementos>
+            <elemento>In</elemento>
+            <elemento>Pr</elemento>
+            <elemento>Po</elemento>
             <elemento>Au</elemento>
             <elemento>Ta</elemento>
          </elementos>

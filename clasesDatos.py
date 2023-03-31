@@ -1,27 +1,10 @@
-class datosElementos():
-
-    def __init__(self,maquina, pin, indice, simboloElemento):
-        self.maquina = maquina
-        self.pin = pin
-        self.indice = indice
-        self.simboloElemento = simboloElemento
-
-    def get_maquinaElemento(self):
-        return self.maquina
-    
-    def get_pinElemento(self):
-        return self.pin
-    
-    def get_simboloElemento(self):
-        return self.simboloElemento
-    
 
 
 class dataCompuesto():
-    def __init__(self, nombreCompuesto, listaCompuestos, numeroCompuesto):
+    def __init__(self, nombreCompuesto, listaCompuestos, numeroDeElementos):
         self.nombreCompuesto = nombreCompuesto
         self.listaCompuestos = listaCompuestos
-        self.numeroCompuesto = numeroCompuesto
+        self.numeroDeElementos = numeroDeElementos
 
 
     def get_listaCompuestos(self):
@@ -33,3 +16,26 @@ class dataCompuesto():
     def imprimirListaCompuestos(self):
         for x in self.listaCompuestos:
             print(x)
+
+
+
+# ------------ CLASES PARA LA LISTA DE MAQUINAS ---------------- #
+class dataMaquina():
+    def __init__(self, nombreMaquina, numeroDePines, numeroDeElementos, numeroDeMaquina, listaPines):
+        self.nombreMaquina = nombreMaquina
+        self.numeroDePines = numeroDePines
+        self.numeroDeElementos = numeroDeElementos
+        self.numeroDeMaquina = numeroDeMaquina
+        self.listaPines = listaPines
+
+class dataPin():
+    def __init__(self, listaPin, contadorPin):
+        self.listaPin = listaPin
+        self.contadorPin = contadorPin
+
+class dataElementoPin():
+    def __init__(self, elementoPin, contadorElemento):
+        self.elementoPin = elementoPin
+        self.contadorElemento = contadorElemento
+
+# ---------------------------------------------------------
