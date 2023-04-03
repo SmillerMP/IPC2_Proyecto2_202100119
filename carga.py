@@ -4,6 +4,12 @@ from clasesDatos import *
 from nodo import *
 
 
+# ----------- LISTA APARTADO DE MAQUINAS -----------#
+lista_ElementosGeneral = ListaSimple()
+def get_listaElementosGeneral():
+    return lista_ElementosGeneral
+#---------------------------------------------------#
+
 
 # ----------- LISTA APARTADO DE MAQUINAS -----------#
 lista_ElementosPin = listaDoble()
@@ -17,7 +23,7 @@ def get_PinesMaquina():
 lista_Maquinas = ListaSimple()
 def get_listaMaquinas():
     return lista_Maquinas
-
+#---------------------------------------------------#
 
 
 # ----------- LISTA APARTADO DE COMPUESTOS  -----------#
@@ -28,10 +34,8 @@ def get_ElementosCompuesto():
 lista_Compuestos = ListaSimple()
 def get_Compuestos():
     return lista_Compuestos
+#---------------------------------------------------#
 
-cola_Compuestos = colaCompuestos()
-def get_cola_Compuestos():
-    return cola_Compuestos
 
 
 def cargaArchivo():
@@ -82,16 +86,21 @@ def cargaArchivo():
 
 
     else:
+        # --------------- LECTURA LISTA DE ELEMENTOS ------------------ #
+        contadorElemento =0
         for elemento in root.findall(".//listaElementos/elemento"):
             numeroAtomico = elemento.find("numeroAtomico").text
             simbolo = elemento.find("simbolo").text
             nombreElemento = elemento.find("nombreElemento").text
+            contadorElemento += 1
             
-            #print(f"Numero Atomico: {numeroAtomico}, Simbolo: {simbolo}, Nombre Elemento: {nombreElemento}")
+            listaData_temp = dataElementosGeneral(contadorElemento, numeroAtomico, simbolo, nombreElemento)
+            lista_ElementosGeneral._agregar_final(listaData_temp)
+            
 
 
+        # --------------- LECTURA LISTA DE MAQUINAS ------------------ #
         contadorMaquina = 0
-
         for Maquina in root.findall(".//listaMaquinas/Maquina"):
             nombre = Maquina.find("nombre").text
             numeroPines = Maquina.find("numeroPines").text
@@ -116,33 +125,37 @@ def cargaArchivo():
                     elemento = elementos.text
                     contadorElemento += 1
 
+                    # Carga de datos en la lista de elementos 
                     listaData_temp = dataElementoPin(elemento, contadorElemento)
                     lista_ElementosPin._agregar_final(listaData_temp)
+                                  
                 
-                    
-                    #print(f"Elemento: {elemento}")
-                
+                # Carga de datos en la lista te pines
                 listaData_temp = dataPin(lista_ElementosPin, contadorPin)
                 lista_PinesMaquina._agregar_final(listaData_temp)
             
+            # Carga de datos en la lista de maquina. lista superior
             listaData_temp = dataMaquina(nombre, numeroPines, numeroElementos, contadorMaquina, lista_PinesMaquina)
             lista_Maquinas._agregar_final(listaData_temp)
 
 
-
+        
         # --------------- LECTURA LISTA DE COMPUESTOS ------------------ #
+        contadorCompuesto = 0
         for compuesto in root.findall(".//listaCompuestos/compuesto"):
             nombre = compuesto.find("nombre").text
-
+            contadorCompuesto += 1
             contador = 0
+
             lista_ElementosCompuesto = ListaSimple()
             for elementos in compuesto.findall("elementos/elemento"):
                 elemento = elementos.text
                 contador += 1
                 
-                lista_ElementosCompuesto._agregar_final(elemento)
+                listaData_temp = dataCompuestoElemento(elemento, contador)
+                lista_ElementosCompuesto._agregar_final(listaData_temp)
 
-            listaElementos_temp = dataCompuesto(nombre, lista_ElementosCompuesto, contador)
+            listaElementos_temp = dataCompuesto(nombre, contadorCompuesto, lista_ElementosCompuesto)
             lista_Compuestos._agregar_final(listaElementos_temp)
 
 
@@ -151,33 +164,39 @@ def cargaArchivo():
                 
 
             
-os.system("clear")
+
 print("\n\n\n")
-cargaArchivo()
-# lista_ElementosPin._recorrer_adelante()
-# lista_ElementosPin._size()
+#cargaArchivo()
 
-nodo_primeroMaquinas = lista_Maquinas.primero
-while nodo_primeroMaquinas != None:
-    nodo_pines = nodo_primeroMaquinas.dato.listaPines.primero
-    while(nodo_pines != None):
-        nodo_elementos = nodo_pines.dato.listaPin.primero
-        while(nodo_elementos != None):
-            print(f"Maquina: {nodo_primeroMaquinas.dato.numeroDeMaquina} --> Pin: {nodo_pines.dato.contadorPin} --> Elemento: {nodo_elementos.dato.elementoPin}")
+
+#---------- RECORRRIDO LISTA ELEMENTOS GENERAL ------------#
+# nodo_actual = lista_ElementosGeneral.primero
+# while nodo_actual != None:
+#     print(f"No. {nodo_actual.dato.contador} --> No. Atomic: {nodo_actual.dato.numeroAtomico} --> Simbolo: {nodo_actual.dato.simbolo} --> Nombre: {nodo_actual.dato.nombreElemento}")
+#     nodo_actual = nodo_actual.siguiente
+
+
+#---------- RECORRRIDO LISTA MAQUINAS ------------#
+# nodo_primeroMaquinas = lista_Maquinas.primero
+# while nodo_primeroMaquinas != None:
+#     nodo_pines = nodo_primeroMaquinas.dato.listaPines.primero
+#     while(nodo_pines != None):
+#         nodo_elementos = nodo_pines.dato.listaPin.primero
+#         while(nodo_elementos != None):
+#             print(f"Maquina: {nodo_primeroMaquinas.dato.numeroDeMaquina} --> Pin: {nodo_pines.dato.contadorPin} --> Elemento: {nodo_elementos.dato.elementoPin}")
             
-            nodo_elementos = nodo_elementos.siguiente
-
-        nodo_pines = nodo_pines.siguiente
-
-    nodo_primeroMaquinas = nodo_primeroMaquinas.siguiente
+#             nodo_elementos = nodo_elementos.siguiente
+#         nodo_pines = nodo_pines.siguiente
+#     nodo_primeroMaquinas = nodo_primeroMaquinas.siguiente
 
 
-#lista_Maquinas._recorrer()
-
+#---------- RECORRRIDO LISTA COMPUESTOS ------------#
 # nodo_actualCompuestos = lista_Compuestos.primero
 # while nodo_actualCompuestos != None:
 #     nodo_actualElementos = nodo_actualCompuestos.dato.listaCompuestos.primero
 #     while nodo_actualElementos != None:
-#         print(nodo_actualCompuestos.dato.nombreCompuesto, nodo_actualElementos.dato, nodo_actualCompuestos.dato.numeroDeElementos)
+#         print(f"Compuesto: {nodo_actualCompuestos.dato.nombreCompuesto, nodo_actualCompuestos.dato.numeroCompuesto} --> Elemento: {nodo_actualElementos.dato.elemento} --> No.: {nodo_actualElementos.dato.numeroElemento}")
 #         nodo_actualElementos = nodo_actualElementos.siguiente
 #     nodo_actualCompuestos = nodo_actualCompuestos.siguiente
+
+

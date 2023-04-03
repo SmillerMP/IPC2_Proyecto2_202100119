@@ -1,21 +1,15 @@
 
-
+# ------------ CLASES PARA LA LISTA DE COMPUESTO ---------------- #
 class dataCompuesto():
-    def __init__(self, nombreCompuesto, listaCompuestos, numeroDeElementos):
+    def __init__(self, nombreCompuesto, numeroCompuesto, listaCompuestos):
         self.nombreCompuesto = nombreCompuesto
+        self.numeroCompuesto = numeroCompuesto
         self.listaCompuestos = listaCompuestos
-        self.numeroDeElementos = numeroDeElementos
 
-
-    def get_listaCompuestos(self):
-        return self.listaCompuestos
-    
-    def get_nombreCompuesto(self):
-        return self.nombreCompuesto
-    
-    def imprimirListaCompuestos(self):
-        for x in self.listaCompuestos:
-            print(x)
+class dataCompuestoElemento():
+    def __init__(self, elemento, numeroElemento):
+        self.elemento = elemento
+        self.numeroElemento = numeroElemento
 
 
 
@@ -39,3 +33,40 @@ class dataElementoPin():
         self.contadorElemento = contadorElemento
 
 # ---------------------------------------------------------
+
+
+
+# ------------ CLASES PARA LA LISTA DE ELEMENTOS PRINCIPAL ---------------- #
+class dataElementosGeneral():
+    def __init__(self, contador, numeroAtomico, simbolo, nombreElemento):
+        self.contador = contador
+        self.numeroAtomico = numeroAtomico
+        self.simbolo = simbolo
+        self.nombreElemento = nombreElemento
+# ---------------------------------------------------------------------------
+
+
+
+
+# ------------ DATOS DE ELEMENTOS ENCONTRADOS EN LOS PINES  ---------------- #
+class elementosEncontrados():
+    def __init__(self, numeroMaquina, numeroPin, contadorElemento, elementoEncontrado):
+        self.numeroMaquina = numeroMaquina
+        self.numeroPin = numeroPin
+        self.contadorElemento = contadorElemento
+        self.elementoEncontrado = elementoEncontrado
+
+class estadosActuales():
+    def __init__(self, pin, posicion, EnUso):
+        self.pin = pin
+        self.posicion = posicion
+        self.EnUso = EnUso
+
+    def set_EnUso(self, estado):
+        self.EnUso = estado
+
+    def set_posicion(self, nuevo):
+        self.posicion = nuevo
+
+        
+# -----------------------------------------------------------------------------

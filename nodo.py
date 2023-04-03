@@ -51,6 +51,17 @@ class listaDoble():
     def _size(self):
         print(self.contador)
 
+    def _limpiar(self):
+            aux = self.primero
+            while aux != None:
+                siguiente = aux.siguiente
+                del aux
+                aux = siguiente
+            
+            # Reset variables
+            self.primero = None
+            self.ultimo = None
+            self.contador = 0
 
 
 class ListaSimple():
@@ -81,8 +92,6 @@ class ListaSimple():
 
     def _size(self):
         return(self.contador)
-        
-
 
 
 
@@ -118,7 +127,7 @@ class ListaSimple():
 # lista._size()
 
 
-class colaCompuestos():
+class cola():
     def __init__(self):
         self.primero = None
         self.ultimo = None
@@ -137,11 +146,14 @@ class colaCompuestos():
     
     def _borrarCola(self):
         self.cola.pop(0)
-        self.primero = self.cola[0]
-        return self.primero
+        if self._size() != 0:
+            self.primero = self.cola[0]
+            return self.primero
     
     def _size(self):
-        print(len(self.cola))
+        return(len(self.cola))
     
     def _recorrer(self):
-        return 
+        for x in self.cola:
+            print(x)
+
