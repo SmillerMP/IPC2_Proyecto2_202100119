@@ -57,16 +57,20 @@ class elementosEncontrados():
         self.elementoEncontrado = elementoEncontrado
 
 class estadosActuales():
-    def __init__(self, pin, posicion, EnUso):
+    def __init__(self, pin, posicion, EnUso, contadorCola):
         self.pin = pin
         self.posicion = posicion
         self.EnUso = EnUso
+        self.contadorCola = contadorCola
 
     def set_EnUso(self, estado):
         self.EnUso = estado
 
     def set_posicion(self, nuevo):
         self.posicion = nuevo
+
+    def set_contadorCola(self, contador):
+        self.contadorCola = contador
 
         
 # -----------------------------------------------------------------------------

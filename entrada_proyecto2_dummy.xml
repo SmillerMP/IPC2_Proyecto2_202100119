@@ -757,5 +757,16 @@
             <elemento>Ta</elemento>
          </elementos>
       </compuesto>
+      <compuesto>
+         <nombre>caca</nombre>
+         <elementos>
+            <elemento>Li</elemento>
+            <elemento>Li</elemento>
+            <elemento>Be</elemento>
+            <elemento>He</elemento>
+            <elemento>Be</elemento>
+            <elemento>Li</elemento>
+         </elementos>
+      </compuesto>
    </listaCompuestos>
 </CONFIG>
