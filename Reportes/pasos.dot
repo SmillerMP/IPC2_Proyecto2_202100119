@@ -1,0 +1,8 @@
+digraph { 
+graph [label="Error en el archivo XML o en la seleccion, verifique por favor", labelloc=top]
+rankdir = TB 
+node[shape=box, style="filled" fontname="Arial", fontsize=12, fontcolor="black"] 
+
+
+
+}

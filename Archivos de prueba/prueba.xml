@@ -90,10 +90,11 @@
     </listaMaquinas>
     <listaCompuestos>
         <compuesto>
-            <nombre>valorAlfanumericoHOLA</nombre>
+            <nombre>hola</nombre>
             <elementos>
-                <elemento>Au</elemento>
-                <elemento>O</elemento>
+                <elemento>Oro</elemento> 
+                <elemento>Neon</elemento>
+                <elemento>Galio</elemento> 
                 <!-- pueden venir mas elementos -->
             </elementos>
         </compuesto>

@@ -36,7 +36,7 @@ def get_Compuestos():
     return lista_Compuestos
 #---------------------------------------------------#
 
-rutaInfo = "D:\\Samuellllll\\Documentos\\Universidad\\CUARTO SEMESTRE\\IPC 2\\Proyectos IPC2\\IPC2_Proyecto2_202100119\\IPC2_Proyecto2_202100119\\entrada_proyecto2_dummy.xml"
+rutaInfo = "D:\\Samuellllll\\Documentos\\Universidad\\CUARTO SEMESTRE\\IPC 2\\Proyectos IPC2\\IPC2_Proyecto2_202100119\\IPC2_Proyecto2_202100119\\Archivos de prueba\\entrada_proyecto2_dummy.xml"
 
 
 def cargaArchivo(ruta):
@@ -163,7 +163,9 @@ def cargaArchivo(ruta):
 
                 # #print(f"Nombre: {nombre}, Elemento: {elemento}")
                 # (len(compuesto.findall("elementos/elemento")))
-                
+
+
+# cargaArchivo(rutaInfo)
 
 # print("\n\n\n")
 
@@ -174,7 +176,7 @@ def cargaArchivo(ruta):
 #     nodo_actual = nodo_actual.siguiente
 
 
-#---------- RECORRRIDO LISTA MAQUINAS ------------#
+# #---------- RECORRRIDO LISTA MAQUINAS ------------#
 # nodo_primeroMaquinas = lista_Maquinas.primero
 # while nodo_primeroMaquinas != None:
 #     nodo_pines = nodo_primeroMaquinas.dato.listaPines.primero
