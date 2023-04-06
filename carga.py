@@ -36,16 +36,15 @@ def get_Compuestos():
     return lista_Compuestos
 #---------------------------------------------------#
 
+rutaInfo = "D:\\Samuellllll\\Documentos\\Universidad\\CUARTO SEMESTRE\\IPC 2\\Proyectos IPC2\\IPC2_Proyecto2_202100119\\IPC2_Proyecto2_202100119\\entrada_proyecto2_dummy.xml"
 
 
-def cargaArchivo():
-    ruta = "D:\\Samuellllll\\Documentos\\Universidad\\CUARTO SEMESTRE\\IPC 2\\Proyectos IPC2\\IPC2_Proyecto2_202100119\\IPC2_Proyecto2_202100119\\entrada_proyecto2_dummy.xml"
+def cargaArchivo(ruta):
     tree = ET.parse(ruta)
     root = tree.getroot()
 
     
     contador = 0
-    elementosPines = 0
     ListaPinError = []
     for Maquina in root.findall(".//listaMaquinas/Maquina"):
 
@@ -87,6 +86,7 @@ def cargaArchivo():
 
     else:
         # --------------- LECTURA LISTA DE ELEMENTOS ------------------ #
+        lista_ElementosGeneral.limpiar()
         contadorElemento =0
         for elemento in root.findall(".//listaElementos/elemento"):
             numeroAtomico = elemento.find("numeroAtomico").text
@@ -97,7 +97,9 @@ def cargaArchivo():
             listaData_temp = dataElementosGeneral(contadorElemento, numeroAtomico, simbolo, nombreElemento)
             lista_ElementosGeneral._agregar_final(listaData_temp)
             
-
+        lista_ElementosGeneral.bubble_sort()
+ 
+        
 
         # --------------- LECTURA LISTA DE MAQUINAS ------------------ #
         contadorMaquina = 0
@@ -163,11 +165,7 @@ def cargaArchivo():
                 # (len(compuesto.findall("elementos/elemento")))
                 
 
-            
-
-print("\n\n\n")
-#cargaArchivo()
-
+# print("\n\n\n")
 
 #---------- RECORRRIDO LISTA ELEMENTOS GENERAL ------------#
 # nodo_actual = lista_ElementosGeneral.primero

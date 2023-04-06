@@ -10,9 +10,14 @@ colaDireccionesClon = ListaSimple()
 lista_ElementosGeneral = get_listaElementosGeneral()
 lista_Maquinas = get_listaMaquinas()
 lista_Compuestos = get_Compuestos()
-listaPasosGenerales = ListaSimple()
 listaPasosEspecificos = ListaSimple()
 listaPinesUso = ListaSimple()
+lisaPrimerosPines = ListaSimple()
+
+listaPasosGenerales = ListaSimple()
+def get_listaPasosGenerales():
+    return listaPasosGenerales
+
 
 # #---------- RECORRRIDO LISTA ELEMENTOS GENERAL ------------#
 # nodo_actual = lista_ElementosGeneral.primero
@@ -75,6 +80,7 @@ def recorridoCompuesto(compuesto):
 # Buscador de elementos en la lista de maquinas
 def buscador(elementoCompuesto):
     encontrado = False
+    contador = 0
     nodo_primeroMaquinas = lista_Maquinas.primero
     while nodo_primeroMaquinas != None:
         nodo_pines = nodo_primeroMaquinas.dato.listaPines.primero
@@ -131,13 +137,27 @@ def repetidor(elemento):
     else:
         return False
 
+def primerosPinesElementos():
+    pines_guardados = set()
+    lisaPrimerosPines = ListaSimple()
+    cola = colaDirecciones.cola
+    for z in cola:
+        pin = z.numeroPin
+        if pin not in pines_guardados:
+            pines_guardados.add(pin)
+            data_temp = pinesPrimeros(pin, cola.index(z))
+            lisaPrimerosPines._agregar_final(data_temp)
+
+    return lisaPrimerosPines
+
+
 def recorerPosicionesPines():
     nodo_actual = listaPinesUso.primero
     while nodo_actual != None:
         print(f"Pin: {nodo_actual.dato.pin}, Posicion: {nodo_actual.dato.posicion}, Uso: {nodo_actual.dato.EnUso}")
         nodo_actual = nodo_actual.siguiente
 
-recorridoCompuesto("hola")
+recorridoCompuesto("Energon")
 
 def recorrerCola():
     direcciones = colaDirecciones.cola
@@ -145,10 +165,7 @@ def recorrerCola():
         print(f"Maquina: {x.numeroMaquina}, Pin: {x.numeroPin}, No. Elemento: {x.contadorElemento}, Elemento: {x.elementoEncontrado}")
 
 recorrerCola()
-# colaDirecciones._borrarCola()
 
-# print("\n")
-# recorrerCola()
 
 print(colaDirecciones._size())
 
@@ -168,15 +185,15 @@ recorerPosicionesPines()
 print(colaDirecciones.cola[0].elementoEncontrado)
 print("\n\n")
 
+
+
 pasos = 0
 fusion = False
-fusionar = 0
 movimiento = -1
+listaPasosGenerales = ListaSimple()
 while colaDirecciones._size() != 0:
     pasos += 1
-    elementoFusionado = " "
-
-    #recorerPosicionesPines()
+    pinFusionado = 0
 
     if fusion == True:
         colaDirecciones._borrarCola()
@@ -184,6 +201,8 @@ while colaDirecciones._size() != 0:
     direcciones = colaDirecciones.cola
     print("reinicio", pasos)
     fusion = False
+    listaPrimeros = primerosPinesElementos()
+    listaPasosEspecificos = ListaSimple()
     for x in direcciones:
         
         indice = direcciones.index(x)
@@ -192,18 +211,24 @@ while colaDirecciones._size() != 0:
 
             if nodoPosicion.dato.EnUso == False:
                 #print(f"Maquina: {x.numeroMaquina}, Pin: {x.numeroPin}, No. Elemento: {x.contadorElemento}, Elemento: {x.elementoEncontrado}")
-                if (nodoPosicion.dato.pin == x.numeroPin) and (nodoPosicion.dato.posicion < x.contadorElemento) and fusion == False:
+                if (nodoPosicion.dato.pin == x.numeroPin) and (nodoPosicion.dato.posicion < x.contadorElemento) and pinFusionado != nodoPosicion.dato.pin:
                     nodoPosicion.dato.set_posicion(x.contadorElemento)
                     nodoPosicion.dato.set_EnUso(True)
                     print("Entro Adelante")
                     movimiento = 1
+
+                    data_temp = datosSalidaEspecificos(nodoPosicion.dato.pin, x.elementoEncontrado, movimiento, nodoPosicion.dato.posicion)
+                    listaPasosEspecificos._agregar_final(data_temp)
                     break
 
-                elif(nodoPosicion.dato.pin == x.numeroPin) and (nodoPosicion.dato.posicion > x.contadorElemento) and fusion == False:
+                elif(nodoPosicion.dato.pin == x.numeroPin) and (nodoPosicion.dato.posicion > x.contadorElemento) and pinFusionado != nodoPosicion.dato.pin:
                     nodoPosicion.dato.set_posicion(x.contadorElemento)
                     nodoPosicion.dato.set_EnUso(True)
                     movimiento = 2
                     print("Entro Atras")
+
+                    data_temp = datosSalidaEspecificos(nodoPosicion.dato.pin, x.elementoEncontrado, movimiento, nodoPosicion.dato.posicion)
+                    listaPasosEspecificos._agregar_final(data_temp)
                     break
 
                 
@@ -211,33 +236,47 @@ while colaDirecciones._size() != 0:
             if(nodoPosicion.dato.pin == x.numeroPin) and (nodoPosicion.dato.posicion == x.contadorElemento) and (fusion == False) and  (indice == 0) and colaDirecciones.cola[0].elementoEncontrado == x.elementoEncontrado:
                 nodoPosicion.dato.set_posicion(x.contadorElemento)
                 nodoPosicion.dato.set_EnUso(False)
-                elementoFusionado = x.elementoEncontrado
+                pinFusionado = nodoPosicion.dato.pin
                 direcciones = colaDirecciones.cola
                 fusion = True
                 movimiento = 3
                 print(f"Entro Fusion Elemento {x.elementoEncontrado} --> Pin: {nodoPosicion.dato.pin}")
+
+                data_temp = datosSalidaEspecificos(nodoPosicion.dato.pin, x.elementoEncontrado, movimiento, nodoPosicion.dato.posicion)
+                listaPasosEspecificos._agregar_final(data_temp)
                 break
                 
 
             elif (nodoPosicion.dato.pin == x.numeroPin) and (nodoPosicion.dato.posicion == x.contadorElemento) :
                 
-                if repetidor(x.elementoEncontrado) == True and listaPinesUso._size() == 1:
-                    break
 
-                # elif (nodoPosicion.dato.EnUso == True) and repetidor(x.elementoEncontrado) == True and listaPinesUso._size() > 1:
-                #     break
-                
-                elif fusion == True and elementoFusionado != x.elementoEncontrado:
-                    nodoPosicion.dato.set_posicion(x.contadorElemento)
-                    nodoPosicion.dato.set_EnUso(True)
-                    print(f"Entro Espera, pin: {x.numeroPin}")
-                    movimiento = 0
+                nodoPrimeros = listaPrimeros.primero
+                while nodoPrimeros != None:
+                    if nodoPrimeros.dato.pin == nodoPosicion.dato.pin and indice == nodoPrimeros.dato.contador:
+                        nodoPosicion.dato.set_posicion(x.contadorElemento)
+                        nodoPosicion.dato.set_EnUso(True)
+                        print(f"Entro Espera, pin: {x.numeroPin}")
+                        movimiento = 0
+
+                        data_temp = datosSalidaEspecificos(nodoPosicion.dato.pin, x.elementoEncontrado, movimiento, nodoPosicion.dato.posicion)
+                        listaPasosEspecificos._agregar_final(data_temp)
+
+                    nodoPrimeros = nodoPrimeros.siguiente
  
             nodoPosicion = nodoPosicion.siguiente
+
+    data_temp = datosSalidaGeneral(pasos, listaPasosEspecificos)
+    listaPasosGenerales._agregar_final(data_temp)
 pasos -= 1
 
 print(pasos)
 
+
+
+# nodo_actual = listaPasosGenerales.primero
+# while nodo_actual != None:
+#     print(nodo_actual.dato)
+#     nodo_actual = nodo_actual.siguiente
 
 
 

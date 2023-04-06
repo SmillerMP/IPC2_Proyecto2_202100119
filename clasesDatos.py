@@ -34,13 +34,13 @@ class dataElementoPin():
 
 # ---------------------------------------------------------
 
-
+    
 
 # ------------ CLASES PARA LA LISTA DE ELEMENTOS PRINCIPAL ---------------- #
 class dataElementosGeneral():
     def __init__(self, contador, numeroAtomico, simbolo, nombreElemento):
         self.contador = contador
-        self.numeroAtomico = numeroAtomico
+        self.numeroAtomico = int(numeroAtomico)
         self.simbolo = simbolo
         self.nombreElemento = nombreElemento
 # ---------------------------------------------------------------------------
@@ -68,5 +68,22 @@ class estadosActuales():
     def set_posicion(self, nuevo):
         self.posicion = nuevo
 
-        
+class pinesPrimeros():
+    def __init__(self, pin, contador):
+        self.pin = pin
+        self.contador = contador
+
 # -----------------------------------------------------------------------------
+
+
+class datosSalidaEspecificos():
+    def __init__(self, pin, elemento, movimiento, posicion):
+        self.pin = pin
+        self.elemento = elemento
+        self.movimiento = movimiento
+        self.posicion = posicion
+
+class datosSalidaGeneral():
+    def __init__(self, contador, listaEspecificos):
+        self.contador = contador
+        self.listaEspecificos = listaEspecificos

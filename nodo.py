@@ -92,6 +92,30 @@ class ListaSimple():
 
     def _size(self):
         return(self.contador)
+    
+    def bubble_sort(self):
+        if self.primero is None:
+            return
+        
+        cambiado = True
+        while cambiado:
+            nodo_actual = self.primero
+            cambiado = False
+            while nodo_actual.siguiente is not None:
+                if nodo_actual.dato.numeroAtomico > nodo_actual.siguiente.dato.numeroAtomico:
+                    temp = nodo_actual.dato
+                    nodo_actual.dato = nodo_actual.siguiente.dato
+                    nodo_actual.siguiente.dato = temp
+                    cambiado = True
+                nodo_actual = nodo_actual.siguiente
+
+    def limpiar(self):
+        while self.primero != None:
+            aux = self.primero
+            self.primero = self.primero.siguiente
+            del aux
+        self.ultimo = None
+        self.contador = 0
 
 
 
