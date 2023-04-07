@@ -5,6 +5,7 @@ import tkinter as tk
 from tkinter import messagebox as MessageBox
 from carga import *
 from clasesDatos import *
+from generadorDot import *
 
 
 rutaArchivo = None
@@ -43,33 +44,22 @@ def limpiar(cajaTexto):
         MessageBox.showinfo("Mensaje", "Limpieza realizada con Exito!")
 
 
+# Experimento
+def expermiento_funcion(textoMaquina, textoCompuesto, ventana):
 
-# Guardar el texto en la ruta especificada anteriormente
-def guardar(cajaTexto):
+    texto_maquina = textoMaquina.get()
+    texto_copuesto = textoCompuesto.get()
 
-    # Verifica que exista una ruta para guardar el archivo
-    if rutaArchivo == None:
-        MessageBox.showerror("Error", "No se ha encontrado una ruta para guardar el archivo!")
-
-    # En caso que se haya elegido una nueva ruta para guardar el archivo apartir de ahora guardara en esa ruta
-    elif rutaGuardado != None:
-
-        with open(rutaGuardado, 'w') as lineas:
-            contenido = cajaTexto.get("1.0", tk.END)
-            lineas.write(contenido)
-            MessageBox.showinfo("Mensaje", "Se guardo correctamente los datos en la ruta: " + str(rutaGuardado))
-
+    if generadorGrap(texto_copuesto, texto_maquina) != 404:
+        textoMaquina.delete(0, tk.END)
+        textoCompuesto.delete(0, tk.END)
+        MessageBox.showinfo("Informacion", "Compuesto generado correctamente, Archivos correspondientes en la carpeta ../Reportes") 
+        ventana.lift()
     else:
-        # Abre el archivo y escribe todos los datos existentes en la caja de texto, en caso de que sea la ruta del archivo cargado
-        with open(rutaArchivo, 'w') as lineas:
-            contenido = cajaTexto.get("1.0", tk.END)
-            lineas.write(contenido)
-            MessageBox.showinfo("Mensaje", "Se guardo correctamente los datos en la ruta: " + str(rutaArchivo))
-
-
+        MessageBox.showerror("Error!", "ha ocurrido unproblema, asegurese de ingresar los datos correctamente")
+        ventana.lift()
 
 # Agregar un nuevo elemento
-
 def agregar_elemento(caja_elemento, caja_simbolo, caja_numeroAtomico, ventana):
 
     listaGeneralElementos = get_listaElementosGeneral()

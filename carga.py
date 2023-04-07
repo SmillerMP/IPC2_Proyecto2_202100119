@@ -103,6 +103,7 @@ def cargaArchivo(ruta):
 
         # --------------- LECTURA LISTA DE MAQUINAS ------------------ #
         contadorMaquina = 0
+        lista_Maquinas.limpiar()
         for Maquina in root.findall(".//listaMaquinas/Maquina"):
             nombre = Maquina.find("nombre").text
             numeroPines = Maquina.find("numeroPines").text
@@ -144,6 +145,7 @@ def cargaArchivo(ruta):
         
         # --------------- LECTURA LISTA DE COMPUESTOS ------------------ #
         contadorCompuesto = 0
+        lista_Compuestos.limpiar()
         for compuesto in root.findall(".//listaCompuestos/compuesto"):
             nombre = compuesto.find("nombre").text
             contadorCompuesto += 1

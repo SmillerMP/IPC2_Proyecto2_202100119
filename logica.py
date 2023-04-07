@@ -45,6 +45,8 @@ def logica(compuestoFusionar, maquina):
 
         if encontrado == False:
             print(f"No se ha encontrado el compuesto: {compuesto}")
+            return encontrado
+            
 
 
 
@@ -80,7 +82,7 @@ def logica(compuestoFusionar, maquina):
 
                 if encontrado == True:
                     break
-                nodo_primeroMaquinas = nodo_primeroMaquinas.siguiente
+            nodo_primeroMaquinas = nodo_primeroMaquinas.siguiente
 
         return encontrado
 
@@ -145,9 +147,9 @@ def logica(compuestoFusionar, maquina):
 
             if fusion == True:
                 colaDirecciones._borrarCola()
-            print("\n")
+            #print("\n")
             direcciones = colaDirecciones.cola
-            print("reinicio", pasos)
+            #print("reinicio", pasos)
             fusion = False
             listaPrimeros = primerosPinesElementos()
             listaPasosEspecificos = ListaSimple()
@@ -162,7 +164,7 @@ def logica(compuestoFusionar, maquina):
                         if (nodoPosicion.dato.pin == x.numeroPin) and (nodoPosicion.dato.posicion < x.contadorElemento) and pinFusionado != nodoPosicion.dato.pin:
                             nodoPosicion.dato.set_posicion(x.contadorElemento)
                             nodoPosicion.dato.set_EnUso(True)
-                            print("Entro Adelante")
+                            #print("Entro Adelante")
                             movimiento = 1
 
                             data_temp = datosSalidaEspecificos(nodoPosicion.dato.pin, x.elementoEncontrado, movimiento, nodoPosicion.dato.posicion)
@@ -173,7 +175,7 @@ def logica(compuestoFusionar, maquina):
                             nodoPosicion.dato.set_posicion(x.contadorElemento)
                             nodoPosicion.dato.set_EnUso(True)
                             movimiento = 2
-                            print("Entro Atras")
+                            #print("Entro Atras")
 
                             data_temp = datosSalidaEspecificos(nodoPosicion.dato.pin, x.elementoEncontrado, movimiento, nodoPosicion.dato.posicion)
                             listaPasosEspecificos._agregar_final(data_temp)
@@ -188,7 +190,7 @@ def logica(compuestoFusionar, maquina):
                         direcciones = colaDirecciones.cola
                         fusion = True
                         movimiento = 3
-                        print(f"Entro Fusion Elemento {x.elementoEncontrado} --> Pin: {nodoPosicion.dato.pin}")
+                        #print(f"Entro Fusion Elemento {x.elementoEncontrado} --> Pin: {nodoPosicion.dato.pin}")
 
                         data_temp = datosSalidaEspecificos(nodoPosicion.dato.pin, x.elementoEncontrado, movimiento, nodoPosicion.dato.posicion)
                         listaPasosEspecificos._agregar_final(data_temp)
@@ -203,7 +205,7 @@ def logica(compuestoFusionar, maquina):
                             if nodoPrimeros.dato.pin == nodoPosicion.dato.pin and indice == nodoPrimeros.dato.contador:
                                 nodoPosicion.dato.set_posicion(x.contadorElemento)
                                 nodoPosicion.dato.set_EnUso(True)
-                                print(f"Entro Espera, pin: {x.numeroPin}")
+                                #print(f"Entro Espera, pin: {x.numeroPin}")
                                 movimiento = 0
 
                                 data_temp = datosSalidaEspecificos(nodoPosicion.dato.pin, x.elementoEncontrado, movimiento, nodoPosicion.dato.posicion)
@@ -217,7 +219,7 @@ def logica(compuestoFusionar, maquina):
             listaPasosGenerales._agregar_final(data_temp)
         pasos -= 1
 
-        print(pasos)
+        #print(pasos)
         return listaPasosGenerales
 
     else:
