@@ -19,9 +19,6 @@ listaCompuestos = get_Compuestos()
 #-------------------------------------------#
 def abrir_archivo_xml():
     abrir_Archivo()
-
-
-
 #-------------------------------------------#
 
 
@@ -229,6 +226,9 @@ def experimento():
     def botonCorrer():
         expermiento_funcion(nombre_maquina, nombre_compuesto, ventana_experimento)
 
+    def botonMaquinas():
+        reporte_maquinas(ventana_experimento)
+
     ventana_experimento = tk.Toplevel(ventana_principal)
     ventana_experimento.geometry("805x492+581+342")
     ventana_experimento.minsize(120, 1)
@@ -281,7 +281,7 @@ def experimento():
     TSeparator2.configure(orient="vertical")
 
     boton_correr_experimento = tk.Button(ventana_experimento)
-    boton_correr_experimento.place(relx=0.099, rely=0.691, height=34
+    boton_correr_experimento.place(relx=0.099, rely=0.65, height=34
         , width=187)
     boton_correr_experimento.configure(activebackground="beige")
     boton_correr_experimento.configure(activeforeground="black")
@@ -405,28 +405,54 @@ def experimento():
     scrollbarCompuestos = tk.Scrollbar(ventana_experimento, orient="vertical", command=tabla_compuestos.yview)
     tabla_compuestos.configure(yscrollcommand=scrollbar.set)
 
-    tabla_compuestos['columns'] = ('No. de Compuesto', 'Nombre Compuesto')
+    tabla_compuestos['columns'] = ('No. Compuesto', 'Compuesto', 'Elementos')
 
     # Formatear columnas
     tabla_compuestos.column('#0', width=0, stretch=tk.NO)
-    tabla_compuestos.column('No. de Compuesto', anchor=tk.CENTER, width=80)
-    tabla_compuestos.column('Nombre Compuesto', anchor=tk.CENTER, width=120)
+    tabla_compuestos.column('No. Compuesto', anchor=tk.CENTER, width=30)
+    tabla_compuestos.column('Compuesto', anchor=tk.CENTER, width=30)
+    tabla_compuestos.column('Elementos', anchor=tk.CENTER, width=140)
 
     # Agregar encabezados de columna
     tabla_compuestos.heading('#0', text='', anchor=tk.CENTER)
-    tabla_compuestos.heading('No. de Compuesto', text='No. de Compuesto', anchor=tk.CENTER)
-    tabla_compuestos.heading('Nombre Compuesto', text='Nombre Compuesto', anchor=tk.CENTER)
+    tabla_compuestos.heading('No. Compuesto', text='No. Compuesto', anchor=tk.CENTER)
+    tabla_compuestos.heading('Compuesto', text='Compuesto', anchor=tk.CENTER)
+    tabla_compuestos.heading('Elementos', text='Elementos', anchor=tk.CENTER)
 
     contador = 1
+    elementos = ""
     nodo_actual = listaCompuestos.primero
     while nodo_actual != None:
-        tabla_compuestos.insert(parent='', index=contador, iid=contador, text='', values=(contador, nodo_actual.dato.nombreCompuesto))
+        nodo_especifico = nodo_actual.dato.listaCompuestos.primero
+        while nodo_especifico != None:
+            elementos += nodo_especifico.dato.elemento
+            elementos += ", "
+            nodo_especifico = nodo_especifico.siguiente
+
+        tabla_compuestos.insert(parent='', index=contador, iid=contador, text='', values=(contador, nodo_actual.dato.nombreCompuesto, elementos))
         contador += 1
+        elementos = ""
         nodo_actual = nodo_actual.siguiente
 
     tabla_compuestos.place(relx=0.424, rely=0.614, relheight=0.35, relwidth=0.546)
     scrollbarCompuestos.place(relx=0.97, rely=0.614, relheight=0.35, relwidth=0.03)
 
+
+
+    boton_maquinas = tk.Button(ventana_experimento)
+    boton_maquinas.place(relx=0.099, rely=0.9, height=34
+        , width=187)
+    boton_maquinas.configure(activebackground="beige")
+    boton_maquinas.configure(activeforeground="black")
+    boton_maquinas.configure(background="#84A9AC")
+    boton_maquinas.configure(compound='left')
+    boton_maquinas.configure(disabledforeground="#a3a3a3")
+    boton_maquinas.configure(foreground="#000000")
+    boton_maquinas.configure(highlightbackground="#d9d9d9")
+    boton_maquinas.configure(highlightcolor="black")
+    boton_maquinas.configure(pady="0")
+    boton_maquinas.configure(text='''Reporte de Maquinas''')
+    boton_maquinas.configure(command=botonMaquinas)
 
 
     ventana_experimento.resizable(0, 0)

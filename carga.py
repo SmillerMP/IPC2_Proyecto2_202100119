@@ -43,128 +43,96 @@ def cargaArchivo(ruta):
     tree = ET.parse(ruta)
     root = tree.getroot()
 
+    # --------------- LECTURA LISTA DE ELEMENTOS ------------------ #
+    lista_ElementosGeneral.limpiar()
+    contadorElemento =0
+    for elemento in root.findall(".//listaElementos/elemento"):
+        numeroAtomico = elemento.find("numeroAtomico").text
+        simbolo = elemento.find("simbolo").text
+        nombreElemento = elemento.find("nombreElemento").text
+        contadorElemento += 1
+        
+        listaData_temp = dataElementosGeneral(contadorElemento, numeroAtomico, simbolo, nombreElemento)
+        lista_ElementosGeneral._agregar_final(listaData_temp)
+        
+    lista_ElementosGeneral.bubble_sort()
+
     
-    contador = 0
-    ListaPinError = []
+
+    # --------------- LECTURA LISTA DE MAQUINAS ------------------ #
+    contadorMaquina = 0
+    lista_Maquinas.limpiar()
     for Maquina in root.findall(".//listaMaquinas/Maquina"):
-
-        # Comprobacion numero de Pines
+        nombre = Maquina.find("nombre").text
         numeroPines = Maquina.find("numeroPines").text
-        listaPines  = Maquina.findall("pin")
-        numeroPines = int(numeroPines)
-
-
-        # Comprobacion Numero de Elementos
-        cantidadElementos = Maquina.find("numeroElementos").text
-        listaElementos = Maquina.findall("pin/elementos/elemento")
-        cantidadElementos = int(cantidadElementos)
-        
-        contador += 1
-
-        #print(len(listaPines), numeroPines)
+        numeroElementos = Maquina.find("numeroElementos").text
+        contadorMaquina += 1
+        contadorPin = 0
+        contadorErroresElementos = 0
     
-        elementosPines = (cantidadElementos / (len(listaPines)))
-        #numeroCompuestoprint(elementosPines)
-
-        if (len(listaPines) != numeroPines):
-            ListaPinError.append(contador)
-
-        #print(len(listaElementos), (cantidadElementos*numeroPines))
-
-    #print(ListaElemetosError)
-
-
-
-    if (len(ListaPinError) != 0):
-        print("Existe Error con los PINES del XML en las Siguientes Maquinas: ")
-        for x in ListaPinError:
-            print(f"Maquina: {x}")
-
-    elif (len(listaElementos) != cantidadElementos): 
-        print("Existe Error con los ELEMENTOS del XML en las Maquinas: ")
-
-
-    else:
-        # --------------- LECTURA LISTA DE ELEMENTOS ------------------ #
-        lista_ElementosGeneral.limpiar()
-        contadorElemento =0
-        for elemento in root.findall(".//listaElementos/elemento"):
-            numeroAtomico = elemento.find("numeroAtomico").text
-            simbolo = elemento.find("simbolo").text
-            nombreElemento = elemento.find("nombreElemento").text
-            contadorElemento += 1
-            
-            listaData_temp = dataElementosGeneral(contadorElemento, numeroAtomico, simbolo, nombreElemento)
-            lista_ElementosGeneral._agregar_final(listaData_temp)
-            
-        lista_ElementosGeneral.bubble_sort()
- 
+        #print(f"Nombre: {nombre}, Numero Pines: {numeroPines}, Numero Elementos: {numeroElementos}")
         
+        lista_PinesMaquina = ListaSimple()
 
-        # --------------- LECTURA LISTA DE MAQUINAS ------------------ #
-        contadorMaquina = 0
-        lista_Maquinas.limpiar()
-        for Maquina in root.findall(".//listaMaquinas/Maquina"):
-            nombre = Maquina.find("nombre").text
-            numeroPines = Maquina.find("numeroPines").text
-            numeroElementos = Maquina.find("numeroElementos").text
-            contadorMaquina += 1
-            contadorPin = 0
-        
-            #print(f"Nombre: {nombre}, Numero Pines: {numeroPines}, Numero Elementos: {numeroElementos}")
+        # Recorre cada pin de la maquina
+        for pines in Maquina.findall("pin"):
+
+            # Resetea la lista donde se guardaran los elementos de cada pin
+            lista_ElementosPin = listaDoble()
+            contadorPin += 1
+            contadorElemento = 0
             
-            lista_PinesMaquina = ListaSimple()
-
-            # Recorre cada pin de la maquina
-            for pines in Maquina.findall("pin"):
-
-                # Resetea la lista donde se guardaran los elementos de cada pin
-                lista_ElementosPin = listaDoble()
-                contadorPin += 1
-                contadorElemento = 0
-                
-                # Recorre cada uno de los elementos del pin
-                for elementos in pines.findall("elementos/elemento"):
-                    elemento = elementos.text
-                    contadorElemento += 1
-
-                    # Carga de datos en la lista de elementos 
-                    listaData_temp = dataElementoPin(elemento, contadorElemento)
-                    lista_ElementosPin._agregar_final(listaData_temp)
-                                  
-                
-                # Carga de datos en la lista te pines
-                listaData_temp = dataPin(lista_ElementosPin, contadorPin)
-                lista_PinesMaquina._agregar_final(listaData_temp)
-            
-            # Carga de datos en la lista de maquina. lista superior
-            listaData_temp = dataMaquina(nombre, numeroPines, numeroElementos, contadorMaquina, lista_PinesMaquina)
-            lista_Maquinas._agregar_final(listaData_temp)
-
-
-        
-        # --------------- LECTURA LISTA DE COMPUESTOS ------------------ #
-        contadorCompuesto = 0
-        lista_Compuestos.limpiar()
-        for compuesto in root.findall(".//listaCompuestos/compuesto"):
-            nombre = compuesto.find("nombre").text
-            contadorCompuesto += 1
-            contador = 0
-
-            lista_ElementosCompuesto = ListaSimple()
-            for elementos in compuesto.findall("elementos/elemento"):
+            # Recorre cada uno de los elementos del pin
+            for elementos in pines.findall("elementos/elemento"):
                 elemento = elementos.text
-                contador += 1
-                
-                listaData_temp = dataCompuestoElemento(elemento, contador)
-                lista_ElementosCompuesto._agregar_final(listaData_temp)
+                contadorErroresElementos += 1
+                contadorElemento += 1
 
-            listaElementos_temp = dataCompuesto(nombre, contadorCompuesto, lista_ElementosCompuesto)
-            lista_Compuestos._agregar_final(listaElementos_temp)
+                # Carga de datos en la lista de elementos 
+                listaData_temp = dataElementoPin(elemento, contadorElemento)
+                lista_ElementosPin._agregar_final(listaData_temp)
+                                
+            
+            # Carga de datos en la lista te pines
+            listaData_temp = dataPin(lista_ElementosPin, contadorPin)
+            lista_PinesMaquina._agregar_final(listaData_temp)
+        
+        # Carga de datos en la lista de maquina. lista superior
+        listaData_temp = dataMaquina(nombre, numeroPines, numeroElementos, contadorMaquina, lista_PinesMaquina)
+        lista_Maquinas._agregar_final(listaData_temp)
+
+        if contadorPin != int(numeroPines):
+            #Error problemas con los pines de la maquina
+            return 4041
+        
+        elif contadorErroresElementos != int(numeroElementos):
+            #Error problemas con los elementos de la maquina
+            return 4042
 
 
-                # #print(f"Nombre: {nombre}, Elemento: {elemento}")
-                # (len(compuesto.findall("elementos/elemento")))
+    
+    # --------------- LECTURA LISTA DE COMPUESTOS ------------------ #
+    contadorCompuesto = 0
+    lista_Compuestos.limpiar()
+    for compuesto in root.findall(".//listaCompuestos/compuesto"):
+        nombre = compuesto.find("nombre").text
+        contadorCompuesto += 1
+        contador = 0
+
+        lista_ElementosCompuesto = ListaSimple()
+        for elementos in compuesto.findall("elementos/elemento"):
+            elemento = elementos.text
+            contador += 1
+            
+            listaData_temp = dataCompuestoElemento(elemento, contador)
+            lista_ElementosCompuesto._agregar_final(listaData_temp)
+
+        listaElementos_temp = dataCompuesto(nombre, contadorCompuesto, lista_ElementosCompuesto)
+        lista_Compuestos._agregar_final(listaElementos_temp)
+
+
+            # #print(f"Nombre: {nombre}, Elemento: {elemento}")
+            # (len(compuesto.findall("elementos/elemento")))
 
 
 # cargaArchivo(rutaInfo)

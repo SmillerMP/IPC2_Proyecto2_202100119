@@ -127,10 +127,10 @@ def logica(compuestoFusionar, maquina):
         recorrerCola()
         print(colaDirecciones._size())
 
-
+        listaPinesUso.limpiar()
         for x in colaDirecciones.cola:
             if (existePines(x.numeroPin)) == False:
-                data_temp = estadosActuales(x.numeroPin, 0, False)
+                data_temp = estadosActuales(x.numeroPin, -1, False)
                 listaPinesUso._agregar_final(data_temp)
 
         recorerPosicionesPines()

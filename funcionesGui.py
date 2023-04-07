@@ -25,8 +25,16 @@ def abrir_Archivo():
     )
 
     if rutaArchivo:
-        cargaArchivo(rutaArchivo)
-        MessageBox.showinfo("Informacion", "Archivo XML cargado Correctamente :)")
+
+        if cargaArchivo(rutaArchivo) == 4041:
+            MessageBox.showerror("¡Error!", "Problemas con el archivo XML, corregia los pines de su maquina")
+
+        elif cargaArchivo(rutaArchivo) == 4042:
+             MessageBox.showerror("¡Error!", "Problemas con el archivo XML, corregia los elementos de su manquina")
+             
+        else:
+            cargaArchivo(rutaArchivo)
+            MessageBox.showinfo("Informacion", "Archivo XML cargado Correctamente :)")
 
     else:
         MessageBox.showwarning("Alerta", "No se a seleccionado ningun archivo.")
@@ -113,4 +121,14 @@ def agregar_elemento(caja_elemento, caja_simbolo, caja_numeroAtomico, ventana):
 
     except:
         MessageBox.showerror("Error", "Ha habido un problema con los datos que desea agegar")
+        ventana.lift()
+
+
+def reporte_maquinas(ventana):
+    if reporteMaquinas() == 100:
+        MessageBox.showinfo("Informacion", "Reporte de Maquinas generado correctamente en la ruta ../Reportes") 
+        ventana.lift()
+
+    elif reporteMaquinas() == 404:
+        MessageBox.showerror("¡Error!", "Existe un error critico, revise si ya cargo su archivo xml") 
         ventana.lift()
