@@ -718,6 +718,25 @@
             </elementos>
          </pin>
       </Maquina>
+      <Maquina>
+         <nombre>prueba2</nombre>
+         <numeroPines>2</numeroPines>
+         <numeroElementos>6</numeroElementos>
+         <pin>
+            <elementos>
+               <elemento>Li</elemento>
+               <elemento>He</elemento>
+               <elemento>N</elemento>
+            </elementos>
+         </pin>
+         <pin>
+            <elementos>
+               <elemento>C</elemento>
+               <elemento>Be</elemento>
+               <elemento>H</elemento>
+            </elementos>
+         </pin>
+      </Maquina>
    </listaMaquinas>
    <listaCompuestos>
       <compuesto>
@@ -729,10 +748,34 @@
             <elemento>W</elemento>
             <elemento>Po</elemento>
             <elemento>Np</elemento>
-            <elemento>Md</elemento>
             <elemento>Cm</elemento>
             <elemento>Au</elemento>
             <elemento>Ta</elemento>
+         </elementos>
+      </compuesto>
+      <compuesto>
+         <nombre>Calcion</nombre>
+         <elementos>
+            <elemento>In</elemento>
+            <elemento>Pr</elemento>
+            <elemento>Yb</elemento>
+            <elemento>W</elemento>
+            <elemento>W</elemento>
+            <elemento>W</elemento>
+            <elemento>W</elemento>
+            <elemento>W</elemento>
+            <elemento>W</elemento>
+         </elementos>
+      </compuesto>
+      <compuesto>
+         <nombre>Ejemplo</nombre>
+         <elementos>
+            <elemento>Li</elemento>
+            <elemento>Li</elemento>
+            <elemento>Be</elemento>
+            <elemento>He</elemento>
+            <elemento>Be</elemento>
+            <elemento>Li</elemento>
          </elementos>
       </compuesto>
    </listaCompuestos>

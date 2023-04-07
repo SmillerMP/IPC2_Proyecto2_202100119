@@ -1,5 +1,6 @@
 from logica import *
 from carga import *
+from creacionXML import *
 import graphviz
 
 
@@ -16,9 +17,12 @@ def generadorGrap(compuesto, maquina):
 
 
     if logica(compuesto, maquina) != False:
-        listaPasosGenerales = logica(compuesto, maquina)
+        listaPasosGenerales, pasos = logica(compuesto, maquina)
+        listaPasos = listaPasosGenerales
+        contadorPasos = pasos
+        #cantidadPasos = pasos
         #print(listaPasosGenerales._size())
-
+        
         def movimiento(move, elemento):
             if move == 0:
                 return "Esperar"
@@ -50,7 +54,7 @@ def generadorGrap(compuesto, maquina):
 
             contador = 0
             cantidadPines = 0
-            nodo_general = listaPasosGenerales.primero
+            nodo_general = listaPasos.primero
             while nodo_general != None:
                 contador += 1
                 nodo_especifico = nodo_general.dato.listaEspecificos.primero
@@ -60,10 +64,10 @@ def generadorGrap(compuesto, maquina):
 
                     if contador == 1:
                         cantidadPines += 1
-                        grafo_dot.write(f'Paso{contador-1}_Pin{nodo_especifico.dato.pin} -> Paso{contador}_Pin{nodo_especifico.dato.pin} [label="Paso: {contador}"]\n')
+                        grafo_dot.write(f'Paso{contador-1}_Pin{nodo_especifico.dato.pin} -> Paso{contador}_Pin{nodo_especifico.dato.pin} [label="Segundo: {contador}", fontname="Arial Black", fontsize=10] \n')
                         grafo_dot.write(f'Paso{contador-1}_Pin{nodo_especifico.dato.pin}[label="Pin Numero: {nodo_especifico.dato.pin}", fillcolor="{asignar_color(nodo_especifico.dato.pin)}", fontsize="11", fontname="Arial Black"]\n\n')
                     
-                    grafo_dot.write(f'Paso{contador}_Pin{nodo_especifico.dato.pin} -> Paso{contador+1}_Pin{nodo_especifico.dato.pin} [label="Paso: {contador+1}"] \n')
+                    grafo_dot.write(f'Paso{contador}_Pin{nodo_especifico.dato.pin} -> Paso{contador+1}_Pin{nodo_especifico.dato.pin} [label="Segundo: {contador+1}", fontname="Arial Black", fontsize=10] \n')
                     
                     terminado = nodo_general.siguiente
                     if encontradoPin(pin, terminado) == False:
@@ -78,7 +82,10 @@ def generadorGrap(compuesto, maquina):
 
             grafo_dot.write('\n\n}')
 
+        generarXML(compuesto, maquina, listaPasos, contadorPasos)
         os.system("dot.exe -Tpdf Reportes/pasos.dot -o  Reportes/pasos.pdf")
+
+
 
     else:
         with open("Reportes/pasos.dot", "w") as grafo_dot:
@@ -89,6 +96,7 @@ def generadorGrap(compuesto, maquina):
             grafo_dot.write('\n\n}')
 
         os.system("dot.exe -Tpdf Reportes/pasos.dot -o  Reportes/pasos.pdf")
+        generarXMLError()
         print("Existe un error en el compuesto o sus elementos")
         return 404
     

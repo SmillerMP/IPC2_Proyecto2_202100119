@@ -220,7 +220,7 @@ def logica(compuestoFusionar, maquina):
         pasos -= 1
 
         #print(pasos)
-        return listaPasosGenerales
+        return listaPasosGenerales, pasos
 
     else:
         return False
