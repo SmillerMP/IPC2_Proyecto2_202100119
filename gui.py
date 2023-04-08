@@ -362,9 +362,9 @@ def experimento():
     nombre_compuesto.configure(selectbackground="#c4c4c4")
     nombre_compuesto.configure(selectforeground="black")
 
-    tabla_maquinas = ttk.Treeview(ventana_experimento)
-    # Agregar columnas a la tabla
 
+    # Tabla para la informacion de cada una de las maquinas
+    tabla_maquinas = ttk.Treeview(ventana_experimento)
     # Configuracion de la scrollbar
     scrollbar = tk.Scrollbar(ventana_experimento, orient="vertical", command=tabla_maquinas.yview)
     tabla_maquinas.configure(yscrollcommand=scrollbar.set)
@@ -385,7 +385,7 @@ def experimento():
     tabla_maquinas.heading('No. Pines', text='No. Pines', anchor=tk.CENTER)
     tabla_maquinas.heading('No. Elementos', text='No. Elementos', anchor=tk.CENTER)
 
-
+    # Impresion de la informacion de la maquina
     contador = 1
     nodo_actual = listaMaquinas.primero
     while nodo_actual != None:
@@ -398,8 +398,7 @@ def experimento():
     scrollbar.place(relx=0.97, rely=0.19, relheight=0.35, relwidth=0.03)
 
 
-
-
+    # Tabla de la informacion de los compuestos
     tabla_compuestos = ttk.Treeview(ventana_experimento)
     # Agregar columnas a la tabla
 
@@ -421,6 +420,7 @@ def experimento():
     tabla_compuestos.heading('Compuesto', text='Compuesto', anchor=tk.CENTER)
     tabla_compuestos.heading('Elementos', text='Elementos', anchor=tk.CENTER)
 
+    # Impresion de los compuestos y sus respectivos elementos
     contador = 1
     elementos = ""
     nodo_actual = listaCompuestos.primero
@@ -464,7 +464,6 @@ def experimento():
 
 # Pagina Principal
 
-
 ventana_principal = tk.Tk()
 ventana_principal.geometry("712x417+601+217")
 ventana_principal.minsize(120, 1)
@@ -488,7 +487,7 @@ Label1.configure(font="-family {Consolas} -size 14 -weight bold")
 Label1.configure(foreground="#E7DFD5")
 Label1.configure(highlightbackground="#d9d9d9")
 Label1.configure(highlightcolor="black")
-Label1.configure(text='''Proyecto 2 IPC 2''')
+Label1.configure(text='''Creacion de Compuestos''')
 
 
 

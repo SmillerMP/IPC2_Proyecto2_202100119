@@ -3,4 +3,4 @@ Carnet: 202100119
 Curso: Introduccion a la programacion 2
 Ciclo: 1er Semestre, Año 2023
 
-Github: https://github.com/SmillerMP/IPC2_Proyecto2_202100119
+Github: https://github.com/SmillerMP/

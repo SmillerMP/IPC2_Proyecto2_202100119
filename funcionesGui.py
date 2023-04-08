@@ -71,7 +71,7 @@ def expermiento_funcion(textoMaquina, textoCompuesto, ventana):
 def agregar_elemento(caja_elemento, caja_simbolo, caja_numeroAtomico, ventana):
 
     listaGeneralElementos = get_listaElementosGeneral()
-    print(listaGeneralElementos._size())
+    #print(listaGeneralElementos._size())
 
     try:
         encontradoElemento = False

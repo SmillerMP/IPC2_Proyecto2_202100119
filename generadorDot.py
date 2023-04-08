@@ -5,9 +5,12 @@ import graphviz
 
 
 def generadorGrap(compuesto, maquina):
+    
+    # Lista de Colores
     codigos_asignados = {}
     colores_disponibles = ['red', 'orange', 'yellow', 'green', 'blue', 'brown', 'blac', 'pink', 'chartreuse', 'darkorchid1', 'deepskyblue', 'gold3', 'gold1', 'firebrick1', 'blueviolet', 'aquamarine']
 
+    # Asignador de Colores
     def asignar_color(codigo):
         if codigo in codigos_asignados:
             return codigos_asignados[codigo]
@@ -15,7 +18,7 @@ def generadorGrap(compuesto, maquina):
         codigos_asignados[codigo] = color
         return color
 
-
+    # logica, analiza el compuesto y la maquina para crear los pasos
     if logica(compuesto, maquina) != False:
         listaPasosGenerales, pasos = logica(compuesto, maquina)
         listaPasos = listaPasosGenerales
@@ -33,6 +36,7 @@ def generadorGrap(compuesto, maquina):
             elif move == 3:
                 retorno = "Fusionar Elemento: " + str(elemento)
                 return retorno
+            
         def encontradoPin(pin, lista):
             encontrado = False
             blabla = lista.dato.listaEspecificos.primero
@@ -43,6 +47,7 @@ def generadorGrap(compuesto, maquina):
 
             return encontrado
 
+        
         with open("Reportes/pasos.dot", "w") as grafo_dot:
             grafo_dot.write('digraph { \n')
             grafo_dot.write(f'graph [label="Pasos para fusionar: {compuesto}", labelloc=top]\n')

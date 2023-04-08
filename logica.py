@@ -27,7 +27,7 @@ def logica(compuestoFusionar, maquina):
     def recorridoCompuesto(compuesto):
         encontrado = False
         colaDirecciones = cola()
-        print(colaDirecciones._size())
+        #print(colaDirecciones._size())
         nodo_actualCompuestos = lista_Compuestos.primero
         while nodo_actualCompuestos != None:
 
