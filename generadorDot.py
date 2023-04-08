@@ -125,6 +125,20 @@ n{contador} [ label = <
     <table>
         <tr><td colspan="3" bgcolor="#245953" > <font color="white"> Maquina: {contador} </font></td></tr>
         <tr><td bgcolor="#408E91"> Nombre: {nodo_actual.dato.nombreMaquina} </td><td bgcolor="#E49393">Numero de Pines: {nodo_actual.dato.numeroDePines} </td><td bgcolor="#D8D8D8">Numero de Elementos: {nodo_actual.dato.numeroDeElementos} </td></tr>
+                ''')
+
+                nodo_pines = nodo_actual.dato.listaPines.primero
+                while(nodo_pines != None):
+                    nodo_elementos = nodo_pines.dato.listaPin.primero
+                    while(nodo_elementos != None):
+                        grafo_dot.write(f'''        
+        <tr><td bgcolor="#6096B4"> Numero Pin: {nodo_pines.dato.contadorPin} </td><td bgcolor="#93BFCF"> Elemento: {nodo_elementos.dato.elementoPin} </td><td bgcolor="#BDCDD6">No. Elemento en Pin: {nodo_elementos.dato.contadorElemento} </td></tr>                
+                        ''')
+                        nodo_elementos = nodo_elementos.siguiente
+                    nodo_pines = nodo_pines.siguiente
+                
+
+                grafo_dot.write(f'''
     </table>
 > ]
                 ''')
