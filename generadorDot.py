@@ -86,18 +86,20 @@ def generadorGrap(compuesto, maquina):
 
         generarXML(compuesto, maquina, listaPasos, contadorPasos)
         os.system("dot.exe -Tpdf Reportes/pasos.dot -o  Reportes/pasos.pdf")
+        os.startfile("Reportes\pasos.pdf")
 
 
 
     else:
         with open("Reportes/pasos.dot", "w") as grafo_dot:
             grafo_dot.write('digraph { \n')
-            grafo_dot.write(f'graph [label="Lista de Maquinas", labelloc=top]\n')
+            grafo_dot.write(f'graph [label="Existe un problema, revise los datos ingresados\n o verifique que hay datos cargados", labelloc=top]\n')
             grafo_dot.write('rankdir = TB \n' )
             grafo_dot.write(f'node[shape=box, style="filled" fontname="Arial", fontsize=12, fontcolor="black"] \n\n')
             grafo_dot.write('\n\n}')
 
         os.system("dot.exe -Tpdf Reportes/pasos.dot -o  Reportes/pasos.pdf")
+        os.startfile("Reportes\pasos.pdf")
         generarXMLError()
         print("Existe un error en el compuesto o sus elementos")
         return 404
@@ -146,6 +148,7 @@ n{contador} [ label = <
 
             grafo_dot.write('\n\n}')
         os.system("dot.exe -Tpdf Reportes/maquinas.dot -o  Reportes/maquinas.pdf")
+        os.startfile("Reportes\maquinas.pdf")
         return 100
     
     else:
@@ -157,5 +160,6 @@ n{contador} [ label = <
             grafo_dot.write('\n\n}')
 
         os.system("dot.exe -Tpdf Reportes/maquinas.dot -o  Reportes/maquinas.pdf")
+        os.startfile("Reportes\maquinas.pdf")
         print("Existe un error en el compuesto o sus elementos")
         return 404

@@ -132,3 +132,20 @@ def reporte_maquinas(ventana):
     elif reporteMaquinas() == 404:
         MessageBox.showerror("¡Error!", "Existe un error critico, revise si ya cargo su archivo xml") 
         ventana.lift()
+
+
+def limpieza():
+    listaGeneralElementos = get_listaElementosGeneral()
+    listaElementosGeneral = get_listaElementosGeneral()
+    listaMaquinas = get_listaMaquinas()
+    listaCompuesto = get_Compuestos()
+
+
+    confirmacion = MessageBox.askyesno("Confirmar", "¿Desea Limpiar el contenido Cargado?")
+
+    if confirmacion:
+        listaGeneralElementos.limpiar()
+        listaElementosGeneral.limpiar()
+        listaMaquinas.limpiar()
+        listaCompuesto.limpiar()
+        MessageBox.showinfo("Mensaje", "Limpieza realizada con Exito!")

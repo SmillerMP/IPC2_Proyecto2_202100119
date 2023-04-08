@@ -23,6 +23,9 @@ def abrir_archivo_xml():
 def documentacion():
     rutaDoc = "Documentacion"
     os.startfile(rutaDoc)
+
+def limpiador():
+    limpieza()
 #-------------------------------------------#
 
 
@@ -603,6 +606,21 @@ BotonAyuda.configure(pady="0")
 BotonAyuda.configure(text='''Ayuda''')
 BotonAyuda.configure(command=documentacion)
 
+
+botonLimpieza = tk.Button(ventana_principal)
+botonLimpieza.place(relx=0.01, rely=0.90, height=30, width=100)
+botonLimpieza.configure(activebackground="beige")
+botonLimpieza.configure(activeforeground="black")
+botonLimpieza.configure(background="#FF8787")
+botonLimpieza.configure(compound='left')
+botonLimpieza.configure(disabledforeground="#a3a3a3")
+botonLimpieza.configure(font="-family {Arial} -size 10 -weight bold")
+botonLimpieza.configure(foreground="#000000")
+botonLimpieza.configure(highlightbackground="#d9d9d9")
+botonLimpieza.configure(highlightcolor="black")
+botonLimpieza.configure(pady="0")
+botonLimpieza.configure(text='''Limpiar''')
+botonLimpieza.configure(command=limpiador)
 
 
 
