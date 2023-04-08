@@ -124,8 +124,8 @@ def logica(compuestoFusionar, maquina):
             nodo_actual = nodo_actual.siguiente
 
     if recorridoCompuesto(compuestoFusionar) != False:
-        recorrerCola()
-        print(colaDirecciones._size())
+        #recorrerCola()
+        #print(colaDirecciones._size())
 
         listaPinesUso.limpiar()
         for x in colaDirecciones.cola:
@@ -133,7 +133,7 @@ def logica(compuestoFusionar, maquina):
                 data_temp = estadosActuales(x.numeroPin, -1, False)
                 listaPinesUso._agregar_final(data_temp)
 
-        recorerPosicionesPines()
+        #recorerPosicionesPines()
 
 
 
