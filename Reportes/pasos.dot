@@ -1,7 +1,146 @@
 digraph { 
-graph [label="Error en el archivo XML o en la seleccion, verifique por favor", labelloc=top]
+graph [label="Pasos para fusionar: Energon", labelloc=top]
 rankdir = TB 
 node[shape=box, style="filled" fontname="Arial", fontsize=12, fontcolor="black"] 
+
+Paso0_Pin3 -> Paso1_Pin3 [label="Segundo: 1", fontname="Arial Black", fontsize=10] 
+Paso0_Pin3[label="Pin Numero: 3", fillcolor="red", fontsize="11", fontname="Arial Black"]
+
+Paso1_Pin3 -> Paso2_Pin3 [label="Segundo: 2", fontname="Arial Black", fontsize=10] 
+Paso1_Pin3[label="Mover Adelante 
+Posicion: 9", fillcolor="red"]
+
+Paso0_Pin4 -> Paso1_Pin4 [label="Segundo: 1", fontname="Arial Black", fontsize=10] 
+Paso0_Pin4[label="Pin Numero: 4", fillcolor="orange", fontsize="11", fontname="Arial Black"]
+
+Paso1_Pin4 -> Paso2_Pin4 [label="Segundo: 2", fontname="Arial Black", fontsize=10] 
+Paso1_Pin4[label="Mover Adelante 
+Posicion: 10", fillcolor="orange"]
+
+Paso0_Pin5 -> Paso1_Pin5 [label="Segundo: 1", fontname="Arial Black", fontsize=10] 
+Paso0_Pin5[label="Pin Numero: 5", fillcolor="yellow", fontsize="11", fontname="Arial Black"]
+
+Paso1_Pin5 -> Paso2_Pin5 [label="Segundo: 2", fontname="Arial Black", fontsize=10] 
+Paso1_Pin5[label="Mover Adelante 
+Posicion: 4", fillcolor="yellow"]
+
+Paso2_Pin3 -> Paso3_Pin3 [label="Segundo: 3", fontname="Arial Black", fontsize=10] 
+Paso2_Pin3[label="Fusionar Elemento: In 
+Posicion: 9", fillcolor="red"]
+
+Paso2_Pin4 -> Paso3_Pin4 [label="Segundo: 3", fontname="Arial Black", fontsize=10] 
+Paso2_Pin4[label="Esperar 
+Posicion: 10", fillcolor="orange"]
+
+Paso2_Pin5 -> Paso3_Pin5 [label="Segundo: 3", fontname="Arial Black", fontsize=10] 
+Paso2_Pin5[label="Esperar 
+Posicion: 4", fillcolor="yellow"]
+
+Paso3_Pin3 -> Paso4_Pin3 [label="Segundo: 4", fontname="Arial Black", fontsize=10] 
+Paso3_Pin3[label="Mover Adelante 
+Posicion: 19", fillcolor="red"]
+
+Paso3_Pin4 -> Paso4_Pin4 [label="Segundo: 4", fontname="Arial Black", fontsize=10] 
+Paso3_Pin4[label="Esperar 
+Posicion: 10", fillcolor="orange"]
+
+Paso3_Pin5 -> Paso4_Pin5 [label="Segundo: 4", fontname="Arial Black", fontsize=10] 
+Paso3_Pin5[label="Esperar 
+Posicion: 4", fillcolor="yellow"]
+
+Paso4_Pin3 -> Paso5_Pin3 [label="Segundo: 5", fontname="Arial Black", fontsize=10] 
+Paso4_Pin3[label="Fusionar Elemento: Pr 
+Posicion: 19", fillcolor="red"]
+
+Paso5_Pin3[label="Fin movimientos"]
+
+Paso4_Pin4 -> Paso5_Pin4 [label="Segundo: 5", fontname="Arial Black", fontsize=10] 
+Paso4_Pin4[label="Esperar 
+Posicion: 10", fillcolor="orange"]
+
+Paso4_Pin5 -> Paso5_Pin5 [label="Segundo: 5", fontname="Arial Black", fontsize=10] 
+Paso4_Pin5[label="Esperar 
+Posicion: 4", fillcolor="yellow"]
+
+Paso5_Pin4 -> Paso6_Pin4 [label="Segundo: 6", fontname="Arial Black", fontsize=10] 
+Paso5_Pin4[label="Fusionar Elemento: Yb 
+Posicion: 10", fillcolor="orange"]
+
+Paso5_Pin5 -> Paso6_Pin5 [label="Segundo: 6", fontname="Arial Black", fontsize=10] 
+Paso5_Pin5[label="Esperar 
+Posicion: 4", fillcolor="yellow"]
+
+Paso6_Pin4 -> Paso7_Pin4 [label="Segundo: 7", fontname="Arial Black", fontsize=10] 
+Paso6_Pin4[label="Mover Adelante 
+Posicion: 14", fillcolor="orange"]
+
+Paso6_Pin5 -> Paso7_Pin5 [label="Segundo: 7", fontname="Arial Black", fontsize=10] 
+Paso6_Pin5[label="Esperar 
+Posicion: 4", fillcolor="yellow"]
+
+Paso7_Pin4 -> Paso8_Pin4 [label="Segundo: 8", fontname="Arial Black", fontsize=10] 
+Paso7_Pin4[label="Fusionar Elemento: W 
+Posicion: 14", fillcolor="orange"]
+
+Paso7_Pin5 -> Paso8_Pin5 [label="Segundo: 8", fontname="Arial Black", fontsize=10] 
+Paso7_Pin5[label="Esperar 
+Posicion: 4", fillcolor="yellow"]
+
+Paso8_Pin5 -> Paso9_Pin5 [label="Segundo: 9", fontname="Arial Black", fontsize=10] 
+Paso8_Pin5[label="Fusionar Elemento: Po 
+Posicion: 4", fillcolor="yellow"]
+
+Paso8_Pin4 -> Paso9_Pin4 [label="Segundo: 9", fontname="Arial Black", fontsize=10] 
+Paso8_Pin4[label="Mover Adelante 
+Posicion: 19", fillcolor="orange"]
+
+Paso9_Pin5 -> Paso10_Pin5 [label="Segundo: 10", fontname="Arial Black", fontsize=10] 
+Paso9_Pin5[label="Mover Adelante 
+Posicion: 13", fillcolor="yellow"]
+
+Paso9_Pin4 -> Paso10_Pin4 [label="Segundo: 10", fontname="Arial Black", fontsize=10] 
+Paso9_Pin4[label="Esperar 
+Posicion: 19", fillcolor="orange"]
+
+Paso10_Pin5 -> Paso11_Pin5 [label="Segundo: 11", fontname="Arial Black", fontsize=10] 
+Paso10_Pin5[label="Fusionar Elemento: Np 
+Posicion: 13", fillcolor="yellow"]
+
+Paso10_Pin4 -> Paso11_Pin4 [label="Segundo: 11", fontname="Arial Black", fontsize=10] 
+Paso10_Pin4[label="Esperar 
+Posicion: 19", fillcolor="orange"]
+
+Paso11_Pin5 -> Paso12_Pin5 [label="Segundo: 12", fontname="Arial Black", fontsize=10] 
+Paso11_Pin5[label="Mover Adelante 
+Posicion: 16", fillcolor="yellow"]
+
+Paso11_Pin4 -> Paso12_Pin4 [label="Segundo: 12", fontname="Arial Black", fontsize=10] 
+Paso11_Pin4[label="Esperar 
+Posicion: 19", fillcolor="orange"]
+
+Paso12_Pin5 -> Paso13_Pin5 [label="Segundo: 13", fontname="Arial Black", fontsize=10] 
+Paso12_Pin5[label="Fusionar Elemento: Cm 
+Posicion: 16", fillcolor="yellow"]
+
+Paso13_Pin5[label="Fin movimientos"]
+
+Paso12_Pin4 -> Paso13_Pin4 [label="Segundo: 13", fontname="Arial Black", fontsize=10] 
+Paso12_Pin4[label="Esperar 
+Posicion: 19", fillcolor="orange"]
+
+Paso13_Pin4 -> Paso14_Pin4 [label="Segundo: 14", fontname="Arial Black", fontsize=10] 
+Paso13_Pin4[label="Fusionar Elemento: Au 
+Posicion: 19", fillcolor="orange"]
+
+Paso14_Pin4 -> Paso15_Pin4 [label="Segundo: 15", fontname="Arial Black", fontsize=10] 
+Paso14_Pin4[label="Mover Atras 
+Posicion: 13", fillcolor="orange"]
+
+Paso15_Pin4 -> Paso16_Pin4 [label="Segundo: 16", fontname="Arial Black", fontsize=10] 
+Paso15_Pin4[label="Fusionar Elemento: Ta 
+Posicion: 13", fillcolor="orange"]
+
+Paso16_Pin4[label="Fin movimientos"]
 
 
 
