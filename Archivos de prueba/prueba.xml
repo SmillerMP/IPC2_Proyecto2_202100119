@@ -21,7 +21,7 @@
         <Maquina>
             <nombre>Maquina1</nombre>
             <numeroPines>5</numeroPines>
-            <numeroElementos>3</numeroElementos>
+            <numeroElementos>15</numeroElementos>
             <pin>
                 <elementos>
                     <elemento>Calcio</elemento>
@@ -67,7 +67,7 @@
         <Maquina>
             <nombre>Maquina2</nombre>
             <numeroPines>2</numeroPines>
-            <numeroElementos>3</numeroElementos>
+            <numeroElementos>6</numeroElementos>
             <pin>
                 <elementos>
                     <elemento>Potasio</elemento>

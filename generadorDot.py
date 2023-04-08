@@ -119,7 +119,7 @@ def reporteMaquinas():
 n{contador} [ label = <
     <table>
         <tr><td colspan="3" bgcolor="#245953" > <font color="white"> Maquina: {contador} </font></td></tr>
-        <tr><td bgcolor="#408E91"> Nombre: {nodo_actual.dato.nombreMaquina} </td><td bgcolor="#E49393">Numero de Pines: {nodo_actual.dato.nombreMaquina} </td><td bgcolor="#D8D8D8">Numero de Elementos: {nodo_actual.dato.numeroDeElementos} </td></tr>
+        <tr><td bgcolor="#408E91"> Nombre: {nodo_actual.dato.nombreMaquina} </td><td bgcolor="#E49393">Numero de Pines: {nodo_actual.dato.numeroDePines} </td><td bgcolor="#D8D8D8">Numero de Elementos: {nodo_actual.dato.numeroDeElementos} </td></tr>
     </table>
 > ]
                 ''')

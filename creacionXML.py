@@ -35,7 +35,7 @@ def generarXML(compuestoExperimento, maquinaExperimento, listaPasos, pasos):
     # Agrega un elemento tiempoOptimo con su valor numérico al compuesto
     tiempo_optimo = ET.SubElement(compuesto, "tiempoOptimo")
     pasosStr = str(pasos)
-    tiempo_optimo.text = pasosStr
+    tiempo_optimo.text = pasosStr + " Segundos"
 
     # Crea el elemento instrucciones y lo agrega al compuesto
     instrucciones = ET.SubElement(compuesto, "instrucciones")

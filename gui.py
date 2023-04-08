@@ -19,6 +19,10 @@ listaCompuestos = get_Compuestos()
 #-------------------------------------------#
 def abrir_archivo_xml():
     abrir_Archivo()
+
+def documentacion():
+    rutaDoc = "Documentacion"
+    os.startfile(rutaDoc)
 #-------------------------------------------#
 
 
@@ -598,7 +602,7 @@ BotonAyuda.configure(highlightbackground="#d9d9d9")
 BotonAyuda.configure(highlightcolor="black")
 BotonAyuda.configure(pady="0")
 BotonAyuda.configure(text='''Ayuda''')
-BotonAyuda.configure(command=experimento)
+BotonAyuda.configure(command=documentacion)
 
 
 
