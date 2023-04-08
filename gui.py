@@ -102,7 +102,7 @@ def abrir_agregar_elementos():
     agregar_elementos.minsize(120, 1)
     agregar_elementos.maxsize(3290, 1061)
     agregar_elementos.resizable(1,  1)
-    agregar_elementos.title("Toplevel 2")
+    agregar_elementos.title("Agregar Elemento")
     agregar_elementos.configure(background="#E7DFD5")
     agregar_elementos.configure(highlightbackground="#d9d9d9")
     agregar_elementos.configure(highlightcolor="black")
@@ -220,8 +220,6 @@ def abrir_agregar_elementos():
 
 # Ventana para la experimentacion
 def experimento():
-    '''This class configures and populates the toplevel window.
-           top is the toplevel containing window.'''
 
     def botonCorrer():
         expermiento_funcion(nombre_maquina, nombre_compuesto, ventana_experimento)
@@ -234,7 +232,7 @@ def experimento():
     ventana_experimento.minsize(120, 1)
     ventana_experimento.maxsize(3290, 1061)
     ventana_experimento.resizable(1,  1)
-    ventana_experimento.title("Toplevel 3")
+    ventana_experimento.title("Experimento")
     ventana_experimento.configure(background="#E7DFD5")
 
 
@@ -468,7 +466,7 @@ ventana_principal.geometry("712x417+601+217")
 ventana_principal.minsize(120, 1)
 ventana_principal.maxsize(3290, 1061)
 ventana_principal.resizable(1,  1)
-ventana_principal.title("Toplevel 0")
+ventana_principal.title("Menu Principal")
 ventana_principal.configure(background="#E7DFD5")
 ventana_principal.configure(highlightbackground="#d9d9d9")
 ventana_principal.configure(highlightcolor="black")
@@ -585,6 +583,23 @@ BotonExperimento.configure(highlightcolor="black")
 BotonExperimento.configure(pady="0")
 BotonExperimento.configure(text='''Seleccionar''')
 BotonExperimento.configure(command=experimento)
+
+
+BotonAyuda = tk.Button(ventana_principal)
+BotonAyuda.place(relx=0.85, rely=0.90, height=30, width=100)
+BotonAyuda.configure(activebackground="beige")
+BotonAyuda.configure(activeforeground="black")
+BotonAyuda.configure(background="#84A9AC")
+BotonAyuda.configure(compound='left')
+BotonAyuda.configure(disabledforeground="#a3a3a3")
+BotonAyuda.configure(font="-family {Arial} -size 10 -weight bold")
+BotonAyuda.configure(foreground="#000000")
+BotonAyuda.configure(highlightbackground="#d9d9d9")
+BotonAyuda.configure(highlightcolor="black")
+BotonAyuda.configure(pady="0")
+BotonAyuda.configure(text='''Ayuda''')
+BotonAyuda.configure(command=experimento)
+
 
 
 

@@ -43,14 +43,11 @@ def generadorGrap(compuesto, maquina):
 
             return encontrado
 
-
         with open("Reportes/pasos.dot", "w") as grafo_dot:
             grafo_dot.write('digraph { \n')
             grafo_dot.write(f'graph [label="Pasos para fusionar: {compuesto}", labelloc=top]\n')
             grafo_dot.write('rankdir = TB \n' )
             grafo_dot.write(f'node[shape=box, style="filled" fontname="Arial", fontsize=12, fontcolor="black"] \n\n')
-
-
 
             contador = 0
             cantidadPines = 0

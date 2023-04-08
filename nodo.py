@@ -99,15 +99,15 @@ class ListaSimple():
         
         cambiado = True
         while cambiado:
-            nodo_actual = self.primero
+            aux = self.primero
             cambiado = False
-            while nodo_actual.siguiente is not None:
-                if nodo_actual.dato.numeroAtomico > nodo_actual.siguiente.dato.numeroAtomico:
-                    temp = nodo_actual.dato
-                    nodo_actual.dato = nodo_actual.siguiente.dato
-                    nodo_actual.siguiente.dato = temp
+            while aux.siguiente is not None:
+                if aux.dato.numeroAtomico > aux.siguiente.dato.numeroAtomico:
+                    temp = aux.dato
+                    aux.dato = aux.siguiente.dato
+                    aux.siguiente.dato = temp
                     cambiado = True
-                nodo_actual = nodo_actual.siguiente
+                aux = aux.siguiente
 
     def limpiar(self):
         while self.primero != None:
